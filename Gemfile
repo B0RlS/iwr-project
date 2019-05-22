@@ -37,6 +37,8 @@ group :development, :test do
 end
 group :development do
   # Enter your gem
+  gem 'bootstrap'
+  gem 'jquery-rails'
 end
 group :test do
   # Enter your gem
