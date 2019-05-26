@@ -5,16 +5,36 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <div class="container">
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
+
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h3 class="my-0 mr-md-auto font-weight-bold"> <%= link_to 'IWR', root_path, id: 'logo' %></h3>
+
+    <% if logged_in? %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Account
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <span class="dropdown-item"> <%= link_to 'Profile', current_user %></span>
+          <span class="dropdown-item"> <%= link_to 'Settings', '#' %></span>
+          <span class="dropdown-item"> <%= link_to 'Log out', logout_path, method: 'delete' %></span>
+        </div>
+      </div>
+    <% else %>
+      <span class="btn btn-outline-primary"><%= link_to 'Log in', login_path %></span>
     <% end %>
 
+  </div>
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+  <% end %>
+  <div class="container">
     <%= yield %>
   </div>
   </body>
