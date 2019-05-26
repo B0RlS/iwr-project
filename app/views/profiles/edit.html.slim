@@ -1,0 +1,17 @@
+= form_for(@profile) do |f|
+  = render 'shared/register_error_messages', object: @profile
+  div class="field"
+    = f.label :country
+    = f.country_select :country_code
+  div class="field"
+    = f.label :city
+    = f.text_field :city, placeholder: 'Your city'
+  div class="field"
+    = f.label :birthday
+    = f.date_select :birthday, start_year: Time.current.year - 100,
+                               end_year: Time.current.year
+  div class="field"
+    = f.label :telephone
+    = f.text_field :telephone
+  div class="actions"
+    = f.submit "Edit profile!"

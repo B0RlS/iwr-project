@@ -32,6 +32,7 @@ end
 # IWR gems
 gem 'slim-rails'
 gem 'bcrypt', '>= 3.1.12'
+gem 'country_select', '~> 4.0'
 group :development, :test do
   # Enter your gem
 end
@@ -42,6 +43,8 @@ group :development do
 end
 group :test do
   # Enter your gem
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
