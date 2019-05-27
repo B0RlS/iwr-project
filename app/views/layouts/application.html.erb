@@ -16,6 +16,9 @@
     <h3 class="my-0 mr-md-auto font-weight-bold"> <%= link_to 'IWR', root_path, id: 'logo' %></h3>
 
     <% if logged_in? %>
+      <span class="btn btn-outline-primary"><%= link_to 'Profile', current_user %></span>
+      <span class="btn btn-outline-primary"><%= link_to 'Log out', logout_path, method: 'delete' %></span>
+
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Account
@@ -26,7 +29,7 @@
           <span class="dropdown-item"> <%= link_to 'Log out', logout_path, method: 'delete' %></span>
         </div>
       </div>
-    <% else %>
+  <% else %>
       <span class="btn btn-outline-primary"><%= link_to 'Log in', login_path %></span>
     <% end %>
 
