@@ -82,7 +82,7 @@ RSpec.describe ProfilesController, type: :controller do
       expect(response).to be_successful
     end
 
-    it 'rednder profiles#edit template' do
+    it 'render profiles#edit template' do
       get :edit, params: { id: profile.id }
       expect(response).to render_template(:edit)
     end
