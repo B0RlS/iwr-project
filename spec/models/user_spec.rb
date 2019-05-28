@@ -17,8 +17,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:email) }
     it { should validate_length_of(:email).is_at_least(10) }
     it { should validate_length_of(:email).is_at_most(200) }
-    it { should allow_value('example@example.com').for(:email)}
-    it [ should validate_uniqueness_of(:email)]
+    it { should allow_value('example@example.com').for(:email) }
   end
 
   describe '#has_secure_password' do
@@ -30,4 +29,6 @@ RSpec.describe User, type: :model do
     it { should validate_length_of(:password).is_at_least(6) }
     it { should validate_length_of(:password).is_at_most(200) }
   end
+
+  # TODO: test User model methods
 end
