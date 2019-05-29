@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+# rubocop:disable all
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.create(valid_params)}
+  let(:user) { User.create(valid_params) }
   let(:valid_params) do
     {
-        name: 'Boris',
-        surname: 'Tsarikov',
-        email: 'example@example.com',
-        password: '1234567',
-        password_confirmation: '1234567'
+      name: 'Boris',
+      surname: 'Tsarikov',
+      email: 'example@example.com',
+      password: '1234567',
+      password_confirmation: '1234567'
     }
   end
 
@@ -32,7 +35,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#has_secure_password' do
-    it { should have_secure_password}
+    it { should have_secure_password }
   end
 
   describe '#password' do
@@ -47,3 +50,5 @@ RSpec.describe User, type: :model do
     end
   end
 end
+
+# rubocop:enable all

@@ -1,5 +1,7 @@
-class ProfilesController < ApplicationController
+# frozen_string_literal: true
 
+# Controller for profile
+class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
   end

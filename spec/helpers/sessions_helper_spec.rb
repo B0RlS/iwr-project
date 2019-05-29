@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+# rubocop:disable all
+
 require 'rails_helper'
 
 RSpec.describe SessionsHelper, type: :helper do
   let(:user) { User.create(valid_params) }
   let(:valid_params) do
     {
-        name: 'Boris',
-        surname: 'Tsarikov',
-        email: 'example@example.com',
-        password: '1234567'
+      name: 'Boris',
+      surname: 'Tsarikov',
+      email: 'example@example.com',
+      password: '1234567'
     }
   end
 
@@ -40,5 +43,6 @@ RSpec.describe SessionsHelper, type: :helper do
       expect(log_in(user)).to eq(user.id)
     end
   end
-
 end
+
+# rubocop:enable all

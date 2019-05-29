@@ -1,5 +1,6 @@
-class HomeController < ApplicationController
-  def home
+# frozen_string_literal: true
 
-  end
+# Controller for home page
+class HomeController < ApplicationController
+  def home; end
 end

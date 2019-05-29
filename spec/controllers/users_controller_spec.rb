@@ -1,21 +1,24 @@
+# frozen_string_literal: true
+# rubocop:disable all
+
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let(:user) { User.create(valid_params)}
+  let(:user) { User.create(valid_params) }
   let(:valid_params) do
     {
-        name: 'Boris',
-        surname: 'Tsarikov',
-        email: 'example@example.com',
-        password: '1234567'
+      name: 'Boris',
+      surname: 'Tsarikov',
+      email: 'example@example.com',
+      password: '1234567'
     }
   end
   let(:invalid_params) do
     {
-        name: nil,
-        surname: nil,
-        email: nil,
-        password: nil
+      name: nil,
+      surname: nil,
+      email: nil,
+      password: nil
     }
   end
 
@@ -51,9 +54,9 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'creates the record in the database' do
-        expect {
+        expect do
           post :create, params: { user: valid_params }
-        }.to change(User, :count).by(1)
+        end.to change(User, :count).by(1)
       end
     end
 
@@ -64,9 +67,9 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'does not create a record in the database' do
-        expect {
+        expect do
           post :create, params: { user: invalid_params }
-        }.not_to change(User, :count)
+        end.not_to change(User, :count)
       end
 
       it 'returns a successful response' do
@@ -76,3 +79,5 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 end
+
+# rubocop:enable all

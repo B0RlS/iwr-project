@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+# rubocop:disable all
 require 'rails_helper'
 
 RSpec.describe ProfilesController, type: :controller do
-  let(:profile) { Profile.create(valid_params)}
+  let(:profile) { Profile.create(valid_params) }
   let(:valid_params) do
     {
       telephone: '375291111111',
@@ -51,9 +53,9 @@ RSpec.describe ProfilesController, type: :controller do
       end
 
       it 'creates the record in the database' do
-        expect {
+        expect do
           post :create, params: { profile: valid_params }
-        }.to change(Profile, :count).by(1)
+        end.to change(Profile, :count).by(1)
       end
     end
 
@@ -64,9 +66,9 @@ RSpec.describe ProfilesController, type: :controller do
       end
 
       it 'does not create a record in the database' do
-        expect {
+        expect do
           post :create, params: { profile: invalid_params }
-        }.not_to change(Profile, :count)
+        end.not_to change(Profile, :count)
       end
 
       it 'returns a successful response' do
@@ -124,10 +126,10 @@ RSpec.describe ProfilesController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    it "deletes the record from the database" do
-      expect {
+    it 'deletes the record from the database' do
+      expect do
         delete :destroy, params: { id: profile.id }
-      }.to change(Profile, :count).by(-1)
+      end.to change(Profile, :count).by(-1)
     end
 
     it 'redirect to root' do
@@ -136,3 +138,5 @@ RSpec.describe ProfilesController, type: :controller do
     end
   end
 end
+
+# rubocop:enable all

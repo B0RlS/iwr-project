@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for users
 class UsersController < ApplicationController
   def new
     @user = User.new
