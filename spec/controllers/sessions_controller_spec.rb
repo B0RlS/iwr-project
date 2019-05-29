@@ -38,24 +38,17 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  # describe 'POST #create' do
-  #    context 'when valid' do
-  #      it 'redirect to profile' do
-  #        post :create, params: { user: valid_params }
-  #        expect(response).to redirect_to(user)
-  #      end
+   describe 'POST #create' do
+     context 'when invalid' do
+        it 'render users#new template' do
+          post :create, params: { session: invalid_params }
+          expect(response).to render_template(:new)
+        end
 
-  #    context 'when invalid' do
-  #      it 'render users#new template' do
-  #        post :create, params: { user: invalid_params }
-  #        expect(response).to render_template(:new)
-  #      end
-
-  #      it 'returns a successful response' do
-  #        post :create, params: { user: invalid_params }
-  #        expect(response).to be_successful
-  #      end
-  #    end
-  #  end
-  # end
+        it 'returns a successful response' do
+          post :create, params: { session: invalid_params }
+          expect(response).to be_successful
+        end
+     end
+    end
 end
