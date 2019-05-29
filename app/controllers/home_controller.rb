@@ -2,5 +2,5 @@
 
 # Controller for home page
 class HomeController < ApplicationController
-  def home; end
+  def index; end
 end
