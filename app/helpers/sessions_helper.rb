@@ -11,9 +11,7 @@ module SessionsHelper
   end
 
   def logged_in_user
-    unless logged_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless logged_in?
   end
 
   def log_out

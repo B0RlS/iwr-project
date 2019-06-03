@@ -2,8 +2,8 @@
 
 # Controller for users
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:update, :destroy]
-  before_action :correct_user, only: [:update, :destroy]
+  before_action :logged_in_user, only: %i[update destroy]
+  before_action :correct_user, only: %i[update destroy]
 
   def create
     @user = User.new(user_params)
