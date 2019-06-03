@@ -6,11 +6,6 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
-  def current_user
-    user_id = session[:user_id]
-    @current_user ||= User.find_by(id: user_id)
-  end
-
   def logged_in?
     !current_user.nil?
   end
@@ -26,7 +21,6 @@ module SessionsHelper
     @current_user = nil
   end
 
-
   # Remembers the user to a permanent session.
   def remember(user)
     user.remember
@@ -38,9 +32,5 @@ module SessionsHelper
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
-  end
-
-  def current_user_profile
-    current_user.profile.id
   end
 end
