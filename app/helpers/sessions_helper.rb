@@ -15,10 +15,17 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def logged_in_user
+    unless logged_in?
+      redirect_to root_path
+    end
+  end
+
   def log_out
     session.delete(:user_id)
     @current_user = nil
   end
+
 
   # Remembers the user to a permanent session.
   def remember(user)

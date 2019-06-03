@@ -2,9 +2,6 @@
 
 # Controller for users
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
 
   def create
     @user = User.new(user_params)
@@ -14,7 +11,7 @@ class UsersController < ApplicationController
       flash[:success] = 'Welcome, registration is successful.'
       redirect_to root_path
     else
-      render 'new'
+      flash[:danger] = 'Oops'
     end
   end
 

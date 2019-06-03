@@ -22,18 +22,6 @@ RSpec.describe UsersController, type: :controller do
     }
   end
 
-  describe 'GET #new' do
-    it 'returns a successful response' do
-      get :new
-      expect(response).to be_successful
-    end
-
-    it 'render users#new template' do
-      get :new
-      expect(response).to render_template(:new)
-    end
-  end
-
   describe 'POST #create' do
     context 'when valid' do
       it 'redirect to root' do
@@ -49,11 +37,6 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context 'when invalid' do
-      it 'render users#new template' do
-        post :create, params: { user: invalid_params }
-        expect(response).to render_template(:new)
-      end
-
       it 'does not create a record in the database' do
         expect do
           post :create, params: { user: invalid_params }

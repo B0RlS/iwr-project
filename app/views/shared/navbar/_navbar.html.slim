@@ -1,4 +1,8 @@
-- unless logged_in?
-  = render 'shared/navbar/welcome_navbar'
-- else
-  = render 'shared/navbar/user_navbar'
+/ - if admin?(current_user)
+/   = render 'shared/navbar/_admin_navbar'
+/ - elsif director?(current_user)
+/   = render 'shared/navbar/_director_navbar'
+/ - elsif manager?(current_user)
+/   = render 'shared/navbar/_manager_navbar'
+/ - else
+= render 'shared/navbar/user_navbar'

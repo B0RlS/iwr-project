@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 # rubocop:disable all
 require 'rails_helper'
+include SessionsHelper
 
 RSpec.describe ProfilesController, type: :controller do
   let(:user) { User.create(user_params) }
@@ -29,6 +30,10 @@ RSpec.describe ProfilesController, type: :controller do
       email: 'test@example.com',
       password: '1234567'
     }
+  end
+
+  before(:each) do
+    log_in user
   end
 
   describe 'GET #show' do

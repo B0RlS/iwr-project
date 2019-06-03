@@ -2,6 +2,8 @@
 
 # Controller for profile
 class ProfilesController < ApplicationController
+  before_action :logged_in_user
+
   def show
     @profile = Profile.find(params[:id])
   end
