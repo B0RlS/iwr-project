@@ -2,9 +2,8 @@
 
 # Controller for users
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
+  before_action :logged_in_user, only: %i[update destroy]
+  before_action :correct_user, only: %i[update destroy]
 
   def create
     @user = User.new(user_params)
@@ -14,8 +13,24 @@ class UsersController < ApplicationController
       flash[:success] = 'Welcome, registration is successful.'
       redirect_to root_path
     else
-      render 'new'
+      flash[:danger] = 'Oops'
     end
+  end
+
+  def update
+    @user = User.find(params[:user_id])
+    if @user.update_attributes(user_params)
+      redirect_to profile_path(user_profile_id)
+    else
+      flash[:danger] = 'Oops'
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @user.destroy
+
+    redirect_to root_path
   end
 
   private
@@ -23,5 +38,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :surname,
                                  :email, :password, :password_confirmation)
+  end
+
+  def user_profile_id
+    @user.profile.id
   end
 end

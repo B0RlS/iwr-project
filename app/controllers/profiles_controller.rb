@@ -2,6 +2,8 @@
 
 # Controller for profile
 class ProfilesController < ApplicationController
+  before_action :logged_in_user
+  before_action :correct_profile, only: %i[edit update]
   def show
     @profile = Profile.find(params[:id])
   end
