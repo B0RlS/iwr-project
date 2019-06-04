@@ -1,22 +1,13 @@
 language: ruby
 
 rvm:
-  - 2.5
-
-services:
-  -postgresql
+  - 2.5.5
 
 cache: bundler
 
 before_install:
   - gem update --system
+  - gem install rubocop -v 0.70
   - gem install bundler -v 2.0.1
-  - gem install rubocop -v 0.67.2
-  - gem install rspec -v 3.8
-  - gem install reek -v 5.4
-  - gem install rake -v 12.3.2
-  - bundle install
-  - bundle exec rake db:setup
-
 script:
   - rubocop
