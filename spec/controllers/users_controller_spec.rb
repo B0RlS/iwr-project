@@ -80,30 +80,7 @@ RSpec.describe UsersController, type: :controller do
         name: 'P'
       }
     end
-<<<<<<< HEAD
-    context 'when user login' do
-      before do
-        log_in user
-      end
-      context 'when the user tries to change his account' do
-        context 'with valid params' do
-          it 'updates the record in the database' do
-            patch :update, params: { user_id: user.id, user: valid_attribute }
-            expect(user.reload.name).to eq('Pepega')
-          end
 
-          it 'redirect to profile' do
-            patch :update, params: { user_id: user.id, user: valid_attribute }
-            expect(response).to redirect_to(profile_path(profile.id))
-          end
-        end
-
-        context 'with invalid params' do
-          it 'does not update the record in the database' do
-            patch :update, params: { user_id: user.id, user: invalid_attribute }
-            expect(user.reload.name).to eq('Boris')
-          end
-=======
     context 'when logged in' do
       before do
         log_in user
@@ -125,7 +102,6 @@ RSpec.describe UsersController, type: :controller do
         it 'does not update the record in the database' do
           patch :update, params: { user_id: user.id, user: invalid_attribute }
           expect(user.reload.name).to eq('Boris')
->>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
         end
       end
 
@@ -138,11 +114,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-<<<<<<< HEAD
-    context 'when user is not authorized' do
-=======
     context 'when logged out' do
->>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       it 'does not update the record in the database and redirect to root' do
         patch :update, params: { user_id: user.id, user: valid_attribute }
         expect(user.reload.name).to eq('Boris')
@@ -152,18 +124,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-<<<<<<< HEAD
-    context 'when user login' do
-      before do
-        log_in user
-      end
-      context 'when the user tries to delete his account' do
-        it 'deletes the record from the database' do
-          expect {
-            delete :destroy, params: { user_id: user.id }
-          }.to change(User, :count).by(-1)
-        end
-=======
     context 'when logged in' do
       before do
         log_in user
@@ -172,7 +132,6 @@ RSpec.describe UsersController, type: :controller do
         expect {
           delete :destroy, params: { user_id: user.id }
         }.to change(User, :count).by(-1)
->>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       end
 
       context 'when the user tries to delete not his account' do
@@ -184,11 +143,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-<<<<<<< HEAD
-    context 'when user is not authorized' do
-=======
     context 'when logged out' do
->>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       it 'does not deletes the record from the database' do
         expect {
           delete :destroy, params: { user_id: user2.id }
