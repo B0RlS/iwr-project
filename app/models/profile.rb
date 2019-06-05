@@ -28,4 +28,8 @@ class Profile < ApplicationRecord
   def user_birthday
     birthday
   end
+
+  def user_email
+    user.email
+  end
 end
