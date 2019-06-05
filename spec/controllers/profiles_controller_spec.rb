@@ -51,7 +51,11 @@ RSpec.describe ProfilesController, type: :controller do
   end
 
   describe 'GET #show' do
+<<<<<<< HEAD
     context 'when user login' do
+=======
+    context 'when logged in' do
+>>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       before do
         log_in user
       end
@@ -66,7 +70,11 @@ RSpec.describe ProfilesController, type: :controller do
       end
     end
 
+<<<<<<< HEAD
     context 'when user is not authorized' do
+=======
+    context 'when logged out' do
+>>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       it 'redirect to root' do
         get :show, params: { id: profile.id }
         expect(response).to redirect_to(root_path)
@@ -75,7 +83,11 @@ RSpec.describe ProfilesController, type: :controller do
   end
 
   describe 'GET #edit' do
+<<<<<<< HEAD
     context 'when user login' do
+=======
+    context 'when logged in' do
+>>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       before do
         log_in user
       end
@@ -84,11 +96,17 @@ RSpec.describe ProfilesController, type: :controller do
         expect(response).to be_successful
       end
 
+<<<<<<< HEAD
       context 'when the user tries to change his profile' do
         it 'render profiles#edit template' do
           get :edit, params: { id: profile.id }
           expect(response).to render_template(:edit)
         end
+=======
+      it 'render profiles#edit template' do
+        get :edit, params: { id: profile.id }
+        expect(response).to render_template(:edit)
+>>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       end
 
       context 'when the user tries to change not his profile' do
@@ -99,7 +117,11 @@ RSpec.describe ProfilesController, type: :controller do
       end
     end
 
+<<<<<<< HEAD
     context 'when user is not authorized' do
+=======
+    context 'when logged out' do
+>>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       it 'redirect to root' do
         get :edit, params: { id: profile.id }
         expect(response).to redirect_to(root_path)
@@ -118,6 +140,7 @@ RSpec.describe ProfilesController, type: :controller do
         telephone: '1'
       }
     end
+<<<<<<< HEAD
     context 'when user login' do
       before do
         log_in user
@@ -141,25 +164,62 @@ RSpec.describe ProfilesController, type: :controller do
             expect(profile.reload.telephone).to eq('375291111111')
           end
         end
+=======
+    context 'when logged in' do
+      before do
+        log_in user
+>>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       end
+      context 'with valid params' do
+        it 'updates the record in the database' do
+          patch :update, params: { id: profile.id, profile: valid_attribute }
+          expect(profile.reload.telephone).to eq('375292222222')
+        end
 
+<<<<<<< HEAD
       context 'when the user tries to change not his profile' do
         it 'does not update the record in the database and redirect to root' do
           patch :update, params: { id: profile2.id, profile: valid_attribute }
           expect(profile.reload.telephone).to eq('375291111111')
           expect(response).to redirect_to(root_path)
+=======
+        it 'redirect to profile' do
+          patch :update, params: { id: profile.id, profile: valid_attribute }
+          expect(response).to redirect_to(profile_path(profile.id))
+        end
+      end
+
+      context 'with invalid params' do
+        it 'does not update the record in the database' do
+          patch :update, params: { id: profile.id, profile: invalid_attribute }
+          expect(profile.reload.telephone).to eq('375291111111')
+>>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
         end
       end
     end
 
+<<<<<<< HEAD
     context 'when user is not authorized' do
+=======
+    context 'when the user tries to change not his profile' do
+>>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       it 'does not update the record in the database and redirect to root' do
         patch :update, params: { id: profile2.id, profile: valid_attribute }
         expect(profile.reload.telephone).to eq('375291111111')
         expect(response).to redirect_to(root_path)
+<<<<<<< HEAD
+=======
+      end
+    end
+
+    context 'when logged out' do
+      it 'does not update the record in the database and redirect to root' do
+        patch :update, params: { id: profile2.id, profile: valid_attribute }
+        expect(profile.reload.telephone).to eq('375291111111')
+        expect(response).to redirect_to(root_path)
+>>>>>>> b5edcdeaa6aa5c3405f7077478bd8ff04c18f543
       end
     end
   end
 end
-
 # rubocop:enable all

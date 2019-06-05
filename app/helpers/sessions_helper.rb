@@ -31,4 +31,13 @@ module SessionsHelper
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
+
+  def current_user
+    user_id = session[:user_id]
+    @current_user ||= User.find_by(id: user_id)
+  end
+
+  def current_user_profile
+    current_user.profile.id
+  end
 end

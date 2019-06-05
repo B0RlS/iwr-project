@@ -5,16 +5,17 @@ class ProfilesController < ApplicationController
   before_action :logged_in_user
   before_action :correct_profile, only: %i[edit update]
   def show
-    @profile = Profile.find(params[:id])
+    @profile = authorize Profile.find(params[:id])
   end
 
   def edit
     @profile = Profile.find(params[:id])
+    authorize @profile
   end
 
   def update
     @profile = Profile.find(params[:id])
-
+    authorize @profile
     if @profile.update_attributes(profile_params)
       redirect_to @profile
     else

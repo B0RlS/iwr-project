@@ -2,9 +2,6 @@
 
 # Controller for users
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[update destroy]
-  before_action :correct_user, only: %i[update destroy]
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -17,8 +14,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(user_params)
+    authorize @user
+  end
+
   def update
     @user = User.find(params[:user_id])
+    authorize @user
     if @user.update_attributes(user_params)
       redirect_to profile_path(user_profile_id)
     else
@@ -28,6 +31,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:user_id])
+    authorize @user
     @user.destroy
 
     redirect_to root_path
