@@ -1,6 +1,17 @@
 div id="profile"
-  p
-    | Profile with id
-    = @profile.id
-div
-  = link_to :edit, edit_profile_path
+  main role="main" class="container"
+    div class="jumbotron"
+      h1
+        | #{@profile.user_name}  #{@profile.user_surname}
+      br
+      h4 Personal information
+      p class="lead"
+        | Country: #{@profile.country_name}
+        br
+        | City: #{@profile.city}
+        br
+        | Telephone: #{@profile.telephone}
+        br
+        | Birthday: #{@profile.user_birthday}
+      = link_to 'Edit', edit_profile_path, :class => 'btn btn-lg btn-primary', :id => 'edit_button'
+
