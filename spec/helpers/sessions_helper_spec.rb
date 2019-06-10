@@ -1,18 +1,9 @@
-# frozen_string_literal: true
 # rubocop:disable all
 
 require 'rails_helper'
 
 RSpec.describe SessionsHelper, type: :helper do
-  let(:user) { User.create(valid_params) }
-  let(:valid_params) do
-    {
-      name: 'Boris',
-      surname: 'Tsarikov',
-      email: 'example@example.com',
-      password: '1234567'
-    }
-  end
+  let(:user) { create(:user) }
 
   describe '#log_out' do
     before do

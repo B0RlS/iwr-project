@@ -1,21 +1,9 @@
-# frozen_string_literal: true
 # rubocop:disable all
 
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
   it { should have_one(:profile).dependent(:destroy) }
-
-  let(:user) { User.create(valid_params) }
-  let(:valid_params) do
-    {
-      name: 'Boris',
-      surname: 'Tsarikov',
-      email: 'example@example.com',
-      password: '1234567',
-      password_confirmation: '1234567'
-    }
-  end
 
   describe '#name' do
     it { should validate_presence_of(:name) }
@@ -48,7 +36,7 @@ RSpec.describe User, type: :model do
 
   describe '#authenticated?' do
     it 'authenticated? should return false for a user with nil digest' do
-      expect(user.authenticated?('')).to eq(false)
+      expect(create(:user).authenticated?('')).to eq(false)
     end
   end
 end

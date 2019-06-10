@@ -1,11 +1,10 @@
-# frozen_string_literal: true
 # rubocop:disable all
 
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let(:user) { User.create(valid_params) }
-  let!(:user2) { User.create(user2_params) }
+  let(:user) { create(:user, :with_profile) }
+  let!(:user2) { create(:user, :with_profile, email: 'test2@example.com') }
   let(:valid_params) do
     {
       name: 'Boris',
@@ -20,23 +19,6 @@ RSpec.describe UsersController, type: :controller do
       surname: nil,
       email: nil,
       password: nil
-    }
-  end
-  let(:user2_params) do
-    {
-      name: 'TestName',
-      surname: 'TestSurname',
-      email: 'test@example.com',
-      password: '1234567'
-    }
-  end
-  let(:profile_params) do
-    {
-      telephone: '375291111111',
-      country_code: 'BY',
-      city: 'Minsk',
-      birthday: '25.01.2017',
-      user_id: user.id
     }
   end
 
@@ -69,7 +51,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'PATCH #update' do
-    let!(:profile) { Profile.create(profile_params) }
     let(:valid_attribute) do
       {
         name: 'Pepega'
@@ -94,21 +75,21 @@ RSpec.describe UsersController, type: :controller do
 
         it 'redirect to profile' do
           patch :update, params: { user_id: user.id, user: valid_attribute }
-          expect(response).to redirect_to(profile_path(profile.id))
+          expect(response).to redirect_to(profile_path(user.profile.id))
         end
       end
 
       context 'with invalid params' do
         it 'does not update the record in the database' do
           patch :update, params: { user_id: user.id, user: invalid_attribute }
-          expect(user.reload.name).to eq('Boris')
+          expect(user.reload.name).to eq('TestName')
         end
       end
 
       context 'when the user tries to change not his account' do
         it 'does not update the record in the database and redirect to root' do
           patch :update, params: { user_id: user2.id, user: valid_attribute }
-          expect(user.reload.name).to eq('Boris')
+          expect(user.reload.name).to eq('TestName')
           expect(response).to redirect_to(root_path)
         end
       end
@@ -117,7 +98,7 @@ RSpec.describe UsersController, type: :controller do
     context 'when logged out' do
       it 'does not update the record in the database and redirect to root' do
         patch :update, params: { user_id: user.id, user: valid_attribute }
-        expect(user.reload.name).to eq('Boris')
+        expect(user.reload.name).to eq('TestName')
         expect(response).to redirect_to(root_path)
       end
     end

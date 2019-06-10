@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # rubocop:disable all
 
 require 'rails_helper'
@@ -11,7 +10,6 @@ RSpec.describe UserCreateService do
       surname: 'TestSurname',
       email: 'test@example.com',
       password: '1234567',
-      password_confirmation: '1234567'
     }
   end
   describe '#call!' do

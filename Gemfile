@@ -48,6 +48,7 @@ group :development do
 end
 group :test do
   # Enter your gem
+  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
 end

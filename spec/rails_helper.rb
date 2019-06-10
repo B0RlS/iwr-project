@@ -8,8 +8,8 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails enviro-t is running in prod mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rspec'
-
-require "pundit/rspec"
+require 'pundit/rspec'
+require 'support/factory_bot'
 include SessionsHelper
 
 # Add additional requires below this line. Rails is
