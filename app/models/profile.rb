@@ -13,8 +13,8 @@ class Profile < ApplicationRecord
   validates :birthday, presence: true
   validates :avatar, attached: true,
                      content_type: %w[image/png image/jpg image/jpeg],
-                     dimension: { width: { min: 80, max: 2400 },
-                                  height: { min: 80, max: 1800 },
+                     dimension: { width: { min: 80, max: 3000 },
+                                  height: { min: 80, max: 3000 },
                                   message: 'is not given between dimension' },
                      size: { less_than: 100.megabytes,
                              message: 'is not given between size' }
