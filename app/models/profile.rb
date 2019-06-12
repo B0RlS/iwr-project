@@ -11,8 +11,7 @@ class Profile < ApplicationRecord
                            length: { minimum: 2, maximum: 2 }
   validates :city, presence: true, length: { minimum: 3, maximum: 20 }
   validates :birthday, presence: true
-  validates :avatar, attached: true,
-                     content_type: %w[image/png image/jpg image/jpeg],
+  validates :avatar, content_type: %w[image/png image/jpg image/jpeg],
                      dimension: { width: { min: 80, max: 3000 },
                                   height: { min: 80, max: 3000 },
                                   message: 'is not given between dimension' },
