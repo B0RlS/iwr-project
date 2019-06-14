@@ -2,12 +2,18 @@ nav.navbar.navbar-expand.navbar-dark.fixed-top.bg-indigo.bg-indigo
   .container
     = link_to image_tag("logo.png", width: "67"), root_path, class: "navbar-brand"
     ul.navbar-nav.ml-auto
+      li.nav-item
+        = link_to 'Find job', vacancies_path, class: "nav-link"
       li.nav-item.dropdown
         a class="dropdown-toggle nav-link" data-toggle="dropdown"
           | Account
         .dropdown-menu
           a
             = link_to 'Profile', profile_path(current_user_profile), class: "dropdown-item"
+          a
+            = link_to 'Create vacancy', new_vacancy_path, class: "dropdown-item"
+          a
+            = link_to 'My vacancies', user_vacancies_path, class: "dropdown-item"
           .dropdown-divider
           a
             = link_to 'Log out', logout_path, method: "delete", class: "dropdown-item"

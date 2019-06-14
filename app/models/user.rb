@@ -4,6 +4,7 @@ class User < ApplicationRecord
   include Authenticatable
   attr_accessor :remember_token
   has_one :profile, dependent: :destroy
+  has_many :vacancies, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
 
