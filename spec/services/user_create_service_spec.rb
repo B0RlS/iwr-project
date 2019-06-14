@@ -1,5 +1,3 @@
-# rubocop:disable all
-
 require 'rails_helper'
 
 RSpec.describe UserCreateService do
@@ -18,5 +16,3 @@ RSpec.describe UserCreateService do
     end
   end
 end
-
-# rubocop:enable all

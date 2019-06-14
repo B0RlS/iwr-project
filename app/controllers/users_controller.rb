@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Controller for users
 class UsersController < ApplicationController
   def create
     @user = User.new(user_params)

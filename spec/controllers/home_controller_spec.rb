@@ -1,4 +1,3 @@
-# rubocop:disable all
 require 'rails_helper'
 
 RSpec.describe HomeController, type: :controller do
@@ -27,4 +26,3 @@ RSpec.describe HomeController, type: :controller do
     end
   end
 end
-# rubocop:enable all

@@ -1,5 +1,3 @@
-# rubocop:disable all
-
 require 'rails_helper'
 
 RSpec.describe ProfileCreateService do
@@ -12,5 +10,3 @@ RSpec.describe ProfileCreateService do
     end
   end
 end
-
-# rubocop:enable all

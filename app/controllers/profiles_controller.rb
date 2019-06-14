@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Controller for profile
 class ProfilesController < ApplicationController
   def show
     @profile = authorize Profile.find(params[:id])
