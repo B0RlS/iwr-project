@@ -41,9 +41,10 @@ gem 'font-awesome-rails'
 gem 'google-cloud-storage', '~> 1.8', require: false
 gem 'gravatar_image_tag'
 gem 'image_processing', '~> 1.2'
-gem 'jquery-rails'
 gem 'mini_magick'
+gem 'jquery-rails'
 gem 'pundit'
+gem 'rubocop-rails'
 gem 'slim-rails'
 gem 'travis'
 group :development, :test do
