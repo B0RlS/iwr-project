@@ -70,6 +70,11 @@ RSpec.describe ProfilesController, type: :controller do
         telephone: '1'
       }
     end
+    let(:valid_avatar) do
+      {
+          avatar: @profile.avatar.attach(io: File.open('spec/fixtures/files'), filename: 'test.png', content_type: 'image/png')
+      }
+    end
 
     context 'when logged in' do
       before do
@@ -92,8 +97,17 @@ RSpec.describe ProfilesController, type: :controller do
       context 'with invalid params' do
         it 'does not update the record in the database' do
           patch :update, params: { id: user.profile.id,
-                profile: invalid_attribute }
+                                   profile: invalid_attribute }
           expect(user.profile.reload.telephone).to eq('375291111111')
+        end
+      end
+
+      # TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      context 'when a user tries to change his avatar' do
+        it 'attaches the uploaded file' do
+          expect {
+            patch :update, params: { id: user.profile.id, profile: valid_avatar }
+          }.to change(ActiveStorage::Attachment, :count).by(1)
         end
       end
     end
@@ -101,7 +115,7 @@ RSpec.describe ProfilesController, type: :controller do
     context 'when the user tries to change not his profile' do
       it 'does not update the record in the database and redirect to root' do
         patch :update, params: { id: user2.profile.id,
-              profile: valid_attribute }
+                                 profile: valid_attribute }
         expect(user2.profile.reload.telephone).to eq('375291111111')
         expect(response).to redirect_to(root_path)
       end
