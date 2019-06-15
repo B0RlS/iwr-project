@@ -1,5 +1,3 @@
-# rubocop:disable all
-
 require 'rails_helper'
 
 RSpec.describe SessionsHelper, type: :helper do
@@ -42,5 +40,3 @@ RSpec.describe SessionsHelper, type: :helper do
     end
   end
 end
-
-# rubocop:enable all

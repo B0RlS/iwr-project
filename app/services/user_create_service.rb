@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Service for User create
 class UserCreateService
   attr_reader :name, :surname, :email, :password, :password_confirmation
 

@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
-# ApplicationPolicy class
 class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    raise Pundit::NotAuthorizedError if user.nil?
-
     @user = user
     @record = record
   end
 
   def index?
-    false
+    user_log_in?
   end
 
   def show?
@@ -20,7 +17,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    user_log_in?
   end
 
   def new?
@@ -28,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    user_log_in?
   end
 
   def edit?
@@ -36,7 +33,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    user_log_in?
   end
 
   # Scope class

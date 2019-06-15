@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Service for Profile create
 class ProfileCreateService
   attr_reader :user_id
 

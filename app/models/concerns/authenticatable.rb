@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Support Concern module Authenticatable
 module Authenticatable
   include ActiveSupport::Concern
   # Returns the hash digest of the given string.

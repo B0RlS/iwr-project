@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# UserPolicy class
 class UserPolicy < ApplicationPolicy
   def edit?
     owner?

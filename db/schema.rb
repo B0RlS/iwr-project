@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_162437) do
+ActiveRecord::Schema.define(version: 2019_06_12_145428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,5 +38,38 @@ ActiveRecord::Schema.define(version: 2019_05_30_162437) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "vacancies", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "country"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "specialty_id"
+    t.boolean "publish", default: false
+    t.bigint "user_id"
+    t.index ["specialty_id"], name: "index_vacancies_on_specialty_id"
+    t.index ["user_id"], name: "index_vacancies_on_user_id"
+  end
+
+  create_table "vacancy_attributes", force: :cascade do |t|
+    t.string "attr_type"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "vacancy_id"
+    t.boolean "important", default: false
+    t.index ["vacancy_id"], name: "index_vacancy_attributes_on_vacancy_id"
+  end
+
+  create_table "vacancy_specialties", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "profiles", "users"
+  add_foreign_key "vacancies", "users"
+  add_foreign_key "vacancies", "vacancy_specialties", column: "specialty_id"
+  add_foreign_key "vacancy_attributes", "vacancies"
 end

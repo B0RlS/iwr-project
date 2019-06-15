@@ -1,7 +1,4 @@
-# rubocop:disable all
-
 require 'rails_helper'
-include SessionsHelper
 
 RSpec.describe ProfilePolicy do
   subject { described_class }
@@ -31,4 +28,3 @@ RSpec.describe ProfilePolicy do
     end
   end
 end
-# rubocop:enable all

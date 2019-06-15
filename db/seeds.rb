@@ -1,12 +1,22 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed
-# to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command
-# (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' },
-# { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+specialties = [
+  'Administrative & Finance',
+  'Cloud & DevOps',
+  'Consulting & Business Analysis',
+  'Data Analysis & Digital Strategy',
+  'Delivery & Project Management',
+  'HR & Talent Acquisition',
+  'Management',
+  'Sales, Marketing & PR',
+  'Service Management and Compliance',
+  'Software Architecture',
+  'Software Engineering',
+  'Software Test Engineering',
+  'Training & Coaching',
+  'User Experience & Design'
+]
+
+specialties.each do |specialty|
+  Vacancy::Specialty.where(name: specialty).first_or_create
+end

@@ -1,0 +1,32 @@
+div class="container" id="main-container"
+  div class="row top-margin"
+    div class="col-md-12"
+      h3 class="font-weight-bolder text-center"
+        | Vacancy Creation
+    div class="col-md-8 offset-2"
+      = form_for @vacancy do |f|
+        = render 'shared/register_error_messages', object: @vacancy
+        div class="field"
+          = f.label :specialty
+          = f.collection_select :specialty_id, Vacancy::Specialty.all,
+                                :id, :name, {}, { class:"form-control" }
+        div class="field"
+          = f.label :name
+          = f.text_field :name, placeholder: 'Vacancy name',
+                                class:'form-control'
+        div class="field"
+          = f.label :description
+          = f.text_area :description, placeholder: 'Vacancy description',
+                                size: '60x5', class:'form-control'
+        div class="field"
+          = f.label :country
+          = f.country_select :country, { include_blank: 'Select a country' },
+                                class:'form-control'
+        div class="field"
+          = f.label :city
+          = f.text_field :city, placeholder: 'Vacancy city',
+                                class:'form-control'
+        = f.hidden_field :user_id, value: current_user.id
+        br
+        div class="action text-center"
+          = f.submit "Next", class:"btn btn-primary"

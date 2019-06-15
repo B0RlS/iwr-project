@@ -1,5 +1,3 @@
-# rubocop:disable all
-
 require 'rails_helper'
 
 RSpec.describe UserPolicy do
@@ -30,4 +28,3 @@ RSpec.describe UserPolicy do
     end
   end
 end
-# rubocop:enable all

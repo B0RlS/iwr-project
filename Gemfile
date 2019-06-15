@@ -33,9 +33,12 @@ end
 
 # IWR gems
 gem 'bcrypt', '>= 3.1.12'
+gem 'bootstrap'
 gem 'country_select', '~> 4.0'
 gem 'font-awesome-rails'
+gem 'jquery-rails'
 gem 'pundit'
+gem 'rubocop-rails'
 gem 'slim-rails'
 gem 'travis'
 group :development, :test do
@@ -43,8 +46,6 @@ group :development, :test do
 end
 group :development do
   # Enter your gem
-  gem 'bootstrap'
-  gem 'jquery-rails'
 end
 group :test do
   # Enter your gem
