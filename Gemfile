@@ -41,6 +41,7 @@ gem 'pundit'
 gem 'rubocop-rails'
 gem 'slim-rails'
 gem 'travis'
+gem 'google_sign_in'
 group :development, :test do
   # Enter your gem
 end
