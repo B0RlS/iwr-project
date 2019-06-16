@@ -53,6 +53,7 @@ RSpec.describe ProfilesController, type: :controller do
 
     context 'when logged out' do
       it 'redirect to root' do
+
         get :edit, params: { id: user.profile.id }
         expect(response).to redirect_to(root_path)
       end
@@ -72,7 +73,8 @@ RSpec.describe ProfilesController, type: :controller do
     end
     let(:valid_avatar) do
       {
-          avatar: user.profile.avatar.attach(Rails.root.join('spec/fixtures/files'), filename: 'test.png', content_type: 'image/png')
+          avatar: user.profile.avatar.attach(io: File.open(Rails.root.
+              join('spec', 'fixtures' , 'files', 'test.png')), filename: 'test.png', content_type: 'image/png')
       }
     end
 
