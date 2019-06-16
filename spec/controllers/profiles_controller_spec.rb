@@ -72,7 +72,7 @@ RSpec.describe ProfilesController, type: :controller do
     end
     let(:valid_avatar) do
       {
-          avatar: @user.image.attach(io: File.open('spec/fixtures/files'), filename: 'test.png', content_type: 'image/png')
+          avatar: user.profile.avatar.attach(Rails.root.join('spec/fixtures/files'), filename: 'test.png', content_type: 'image/png')
       }
     end
 
