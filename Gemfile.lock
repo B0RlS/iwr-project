@@ -404,6 +404,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-controller-testing
   rspec-rails (~> 3.8)
+  rubocop
   rubocop-rails
   sass-rails (~> 5.0)
   selenium-webdriver

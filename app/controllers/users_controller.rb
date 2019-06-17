@@ -36,6 +36,14 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def email_uniq?
+    if User.find_by(email: request.params['email'].to_s).nil?
+      render status: '404', json: { message: '' }
+    else
+      render status: '204', json: { message: '' }
+    end
+  end
+
   private
 
   def user_params
