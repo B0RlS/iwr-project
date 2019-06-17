@@ -53,6 +53,7 @@ RSpec.describe ProfilesController, type: :controller do
 
     context 'when logged out' do
       it 'redirect to root' do
+
         get :edit, params: { id: user.profile.id }
         expect(response).to redirect_to(root_path)
       end
@@ -68,6 +69,13 @@ RSpec.describe ProfilesController, type: :controller do
     let(:invalid_attribute) do
       {
         telephone: '1'
+      }
+    end
+
+    let(:valid_avatar) do
+      {
+          avatar: fixture_file_upload(Rails.root.
+              join('spec', 'fixtures' , 'files', 'test_valid_avatar.png'), 'image/png')
       }
     end
 
@@ -92,8 +100,17 @@ RSpec.describe ProfilesController, type: :controller do
       context 'with invalid params' do
         it 'does not update the record in the database' do
           patch :update, params: { id: user.profile.id,
-                profile: invalid_attribute }
+                                   profile: invalid_attribute }
           expect(user.profile.reload.telephone).to eq('375291111111')
+        end
+      end
+
+
+      context 'when a user tries to change his avatar' do
+        it 'attaches the uploaded valid file' do
+          expect {
+            patch :update, params: { id: user.profile.id, profile: valid_avatar }
+          }.to change(ActiveStorage::Attachment, :count).by(1)
         end
       end
     end
@@ -101,7 +118,7 @@ RSpec.describe ProfilesController, type: :controller do
     context 'when the user tries to change not his profile' do
       it 'does not update the record in the database and redirect to root' do
         patch :update, params: { id: user2.profile.id,
-              profile: valid_attribute }
+                                 profile: valid_attribute }
         expect(user2.profile.reload.telephone).to eq('375291111111')
         expect(response).to redirect_to(root_path)
       end

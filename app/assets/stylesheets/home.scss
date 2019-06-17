@@ -74,13 +74,41 @@
   margin-top: 150px;
   margin-left: 150px;
 }
-
-.bg-indigo {
-  background-color: indigo;
+#badnote {
+  color: red;
+  font-size: 80%;
 }
-
+#goodnote {
+  color: green;
+  font-size: 80%;
+}
+#hintalert {
+  color: blue;
+  font-size: 80%;
+}
+.bg-indigo {
+  background-color: #444444;
+}
 .navbar-dark{
   height: 70px;
+}
+.redalert {
+  border: solid red 2px !important;
+}
+.greenalert {
+  border: solid green 2px !important;
+}
+.hintalert {
+  border: solid blue 2px !important;
+}
+.onblur {
+  border: 1px solid #ced4da !important;
+}
+.pointer {
+  cursor: pointer;
+}
+.notallowed {
+  cursor: not-allowed;
 }
 #map {
     margin: auto;

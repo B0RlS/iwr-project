@@ -1,27 +1,28 @@
-
-    main role="main" class="container" id="profile"
-        div class="bloktron" id="profile-head-edit"
-          div class="container"
-            h1
-              | Editing profile information
-        div class="bloktron" id="profile-info-edit"
-            = form_for(@profile) do |f|
-                = render 'shared/register_error_messages', object: @profile
-                div class="field"
-                = f.label :country
-                br
-                = f.country_select :country_code, :class => 'form-control'
-                div class="field"
-                = f.label :city
-                = f.text_field :city, placeholder: 'Your city', :class => 'form-control'
-                div class="field"
-                = f.label :birthday
-                br
-                = f.date_select :birthday, start_year: Time.current.year - 100,
-                    end_year: Time.current.year, :class => 'form-control'
-                div class="field"
-                = f.label :telephone
-                = f.text_field :telephone, placeholder: 'Your telephone', :class => 'form-control'
-                br
-                div class="actions"
-                = f.submit "Edit profile!", :class => 'btn btn-primary'
+main role="main" class="max-w" id="profile"
+    .bloktron#profile-head-edit.text-center
+        h1 Editing profile information
+    .bloktron#profile-info-edit
+        = form_for(@profile) do |f|
+            = render 'shared/register_error_messages', object: @profile
+            .field
+            = f.label :avatar
+            br
+            = f.file_field :avatar
+            .field
+            = f.label :country
+            br
+            = f.country_select :country_code, :class => 'form-control'
+            .field
+            = f.label :city
+            = f.text_field :city, placeholder: 'Your city', :class => 'form-control'
+            .field
+            = f.label :birthday
+            br
+            = f.date_select :birthday, start_year: Time.current.year - 100,
+                end_year: Time.current.year, :class => 'form-control'
+            .field
+            = f.label :telephone
+            = f.text_field :telephone, placeholder: 'Your telephone', :class => 'form-control'
+            br
+            .actions
+            = f.submit "Edit profile!", :class => 'btn btn-primary'
