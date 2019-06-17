@@ -70,7 +70,19 @@ RSpec.describe ProfilesController, type: :controller do
 			{
 				telephone: '1'
 			}
-		end
+    end
+    let(:valid_avatar) do
+      {
+          avatar: fixture_file_upload(Rails.root.
+              join('spec', 'fixtures' , 'files', 'test_valid_avatar.png'), 'image/png')
+      }
+    end
+    let(:valid_resume) do
+      {
+          resume: fixture_file_upload(Rails.root.
+              join('spec', 'fixtures' , 'files', 'test_valid_resume.pdf'), 'application/pdf')
+      }
+    end
 		context 'when logged in' do
 			before do
 				log_in user
@@ -82,13 +94,6 @@ RSpec.describe ProfilesController, type: :controller do
 				end
 			end
 		end
-
-    let(:valid_avatar) do
-      {
-          avatar: fixture_file_upload(Rails.root.
-              join('spec', 'fixtures' , 'files', 'test_valid_avatar.png'), 'image/png')
-      }
-    end
 
     context 'when logged in' do
       before do
@@ -121,6 +126,14 @@ RSpec.describe ProfilesController, type: :controller do
         it 'attaches the uploaded valid file' do
           expect {
             patch :update, params: { user_id: user.profile.id, profile: valid_avatar }
+          }.to change(ActiveStorage::Attachment, :count).by(1)
+        end
+      end
+
+      context 'when a user tries to change his resume' do
+        it 'attaches the uploaded valid resume' do
+          expect {
+            patch :update, params: { user_id: user.profile.id, profile: valid_resume }
           }.to change(ActiveStorage::Attachment, :count).by(1)
         end
       end

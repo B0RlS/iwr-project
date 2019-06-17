@@ -3,6 +3,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :avatar
+  has_one_attached :resume
 
   validates :telephone, presence: true, numericality: true,
                         length: { minimum: 10, maximum: 15 }
@@ -14,6 +15,12 @@ class Profile < ApplicationRecord
                      dimension: { width: { min: 80, max: 3000 },
                                   height: { min: 80, max: 3000 },
                                   message: 'is not given between dimension' },
+                     size: { less_than: 100.megabytes,
+                             message: 'is not given between size' }
+
+  validates :resume, content_type: { in: 'application/pdf',
+                                     message: 'is not a PDF' },
+                     limit: { max: 1 },
                      size: { less_than: 100.megabytes,
                              message: 'is not given between size' }
 

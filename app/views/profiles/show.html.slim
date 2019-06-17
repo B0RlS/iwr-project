@@ -16,6 +16,11 @@
           | Telephone: #{@profile.telephone}
           br
           | Birthday: #{@profile.user_birthday}
+          br
+          | Resume:
+          - if @profile.resume.attached?
+            = link_to 'Download resume', rails_blob_path(@profile.resume, disposition: 'attachment'),
+                    :class => 'btn btn-lg btn-success', :id => 'download_button'
         = link_to 'Edit', edit_profile_path, :class => 'btn btn-lg btn-primary', :id => 'edit_button'
       .profile-avatar
         - if @profile.avatar.attached?

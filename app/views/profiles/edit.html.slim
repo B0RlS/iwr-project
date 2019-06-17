@@ -9,6 +9,10 @@ main role="main" class="max-w" id="profile"
             br
             = f.file_field :avatar
             .field
+            = f.label :resume
+            br
+            = f.file_field :resume
+            .field
             = f.label :country
             br
             = f.country_select :country_code, :class => 'form-control'
