@@ -47,6 +47,23 @@ ActiveRecord::Schema.define(version: 2019_06_12_145428) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.string "sphere"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_skill_levels", force: :cascade do |t|
+    t.integer "level"
+    t.bigint "user_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_user_skill_levels_on_skill_id"
+    t.index ["user_id"], name: "index_user_skill_levels_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "surname"
@@ -90,6 +107,8 @@ ActiveRecord::Schema.define(version: 2019_06_12_145428) do
   end
 
   add_foreign_key "profiles", "users"
+  add_foreign_key "user_skill_levels", "skills"
+  add_foreign_key "user_skill_levels", "users"
   add_foreign_key "vacancies", "users"
   add_foreign_key "vacancies", "vacancy_specialties", column: "specialty_id"
   add_foreign_key "vacancy_attributes", "vacancies"

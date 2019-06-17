@@ -15,6 +15,9 @@ module IwrProject
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.generators.stylesheets = false
+    config.generators.javascripts = false
+    
 
     # this option is disabled due to Heroku
     config.assets.initialize_on_precompile = false

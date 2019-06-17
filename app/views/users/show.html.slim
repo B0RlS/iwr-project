@@ -1,0 +1,10 @@
+p
+  = @user.name
+p
+  = @user.surname
+p
+  = @user.email
+p
+  = link_to 'Edit skills', edit_user_skill_level_path(@user)
+p
+  = link_to 'Skills', user_skill_level_path(@user)

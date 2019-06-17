@@ -37,6 +37,7 @@ gem 'active_storage_validations'
 gem 'activestorage'
 gem 'bcrypt', '>= 3.1.12'
 gem 'bootstrap'
+gem 'bullet'
 gem 'country_select', '~> 4.0'
 gem 'font-awesome-rails'
 gem 'google-cloud-storage', '~> 1.8', require: false

@@ -1,0 +1,15 @@
+div class="skills-panel"
+	div class="row"
+	  div class="col" id="top-margin"
+	    h3 class="font-weight-bolder text-center"
+	      | #{@user.name}'s' skills
+	- spheres = []
+	- @skills.each do |skill|
+		h3
+			= skill.sphere unless spheres.include?(skill.sphere)
+		- spheres << skill.sphere
+		- skill_level = @skill_levels.find_by(skill_id: skill.id)
+		p	
+			= skill.name
+			= skill_level.nil? ? 0 : skill_level.level
+	= link_to 'Edit', edit_user_skill_level_path

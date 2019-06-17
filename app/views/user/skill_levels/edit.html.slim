@@ -1,0 +1,16 @@
+.skills-panel
+  .row
+    .col#top-margin
+      h3.font-weight-bolder.text-center Edit Skills
+  .row
+    .col-md-8.offset-2.text-center
+    - spheres = []
+    = form_for @user do |f|
+      - @skills.each do |skill|
+        h3
+          = skill.sphere unless spheres.include?(skill.sphere)
+          - spheres << skill.sphere
+        .field
+          = render 'user_skill_level_fields', skill: skill
+      p.submit-button
+        = f.submit 'Save', class: "btn btn-primary"

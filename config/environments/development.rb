@@ -1,3 +1,4 @@
+# rubocop:disable all
 # frozen_string_literal: true
 
 Rails.application.configure do
@@ -67,4 +68,10 @@ Rails.application.configure do
   # detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+  end
 end
