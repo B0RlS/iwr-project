@@ -1,9 +1,7 @@
-.skills-panel
-  .row
-    .col#top-margin
-      h3.font-weight-bolder.text-center Edit Skills
-  .row
-    .col-md-8.offset-2.text-center
+main role="main" class="max-w" id="profile"
+  .bloktron#profile-head-edit.text-center
+    h1 Editing skills information
+  .bloktron#profile-info-edit
     - spheres = []
     = form_for @user do |f|
       - @skills.each do |skill|
@@ -12,5 +10,5 @@
           - spheres << skill.sphere
         .field
           = render 'user_skill_level_fields', skill: skill
-      p.submit-button
-        = f.submit 'Save', class: "btn btn-primary"
+      .actions
+        = f.submit 'Edit skills!', :class => 'btn btn-primary'

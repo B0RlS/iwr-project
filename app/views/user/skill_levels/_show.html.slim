@@ -1,15 +1,19 @@
-div class="skills-panel"
-	div class="row"
-	  div class="col" id="top-margin"
-	    h3 class="font-weight-bolder text-center"
-	      | #{@user.name}'s' skills
-	- spheres = []
-	- @skills.each do |skill|
-		h3
-			= skill.sphere unless spheres.include?(skill.sphere)
-		- spheres << skill.sphere
-		- skill_level = @skill_levels.find_by(skill_id: skill.id)
-		p	
-			= skill.name
-			= skill_level.nil? ? 0 : skill_level.level
-	= link_to 'Edit', edit_user_skill_level_path
+.max-w
+  .bloktron#profile-info-head.text-center
+    h1
+      | #{@user.name}'s' skills
+  .d-flex.flex-wrap.justify-content-between.align-items-center.bg-colore
+    .bloktron#profile-info
+      h1 Skills information
+      p.lead
+        - spheres = []
+        - @skills.each do |skill|
+          h3
+            = skill.sphere unless spheres.include?(skill.sphere)
+            - spheres << skill.sphere
+            - skill_level = @skill_levels.find_by(skill_id: skill.id)
+          h6
+            - unless skill_level.nil? || skill_level.level == 0
+              = skill.name + ' --- '
+              = skill_level.level
+      = link_to 'Edit', edit_user_skill_level_path, :class => 'btn btn-lg btn-primary', :id => 'edit_button'

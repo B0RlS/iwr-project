@@ -1,12 +1,13 @@
 - existing_skill = @skill_levels.find_by(skill_id: skill.id) unless @skill_levels.nil?
 p
-	= label_tag 'level', skill.name
-p
-	= number_field_tag "user[skill_levels_attributes][][level]",
-					existing_skill.nil? ? 0 : existing_skill.level, class: "form-control"
-p
-	= hidden_field_tag "user[skill_levels_attributes][][skill_id]", skill.id
-p
-	= hidden_field_tag "user[skill_levels_attributes][][user_id]", @user.id
-p
-	= hidden_field_tag "user[skill_levels_attributes][][id]", existing_skill.nil? ? nil : existing_skill.id
+  = label_tag 'level', skill.name + ' --- '
+
+  = select_tag "user[skill_levels_attributes][][level]",
+          options_for_select(['0', '1', '2', '3', '4', '5'],
+                  existing_skill.nil? ? '0' : existing_skill.level)
+
+  = hidden_field_tag "user[skill_levels_attributes][][skill_id]", skill.id
+
+  = hidden_field_tag "user[skill_levels_attributes][][user_id]", @user.id
+
+  = hidden_field_tag "user[skill_levels_attributes][][id]", existing_skill.nil? ? nil : existing_skill.id
