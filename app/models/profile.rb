@@ -3,6 +3,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :avatar
+  has_one_attached :resume
 
   validates :telephone, presence: true, numericality: true,
                         length: { minimum: 10, maximum: 15 }
@@ -16,6 +17,11 @@ class Profile < ApplicationRecord
                                   message: 'is not given between dimension' },
                      size: { less_than: 100.megabytes,
                              message: 'is not given between size' }
+
+  validates :resume, content_type: { in: 'application/pdf',
+                                     message: 'is not a PDF' },
+            limit: {max: 1 }, size: { less_than: 100.megabytes,
+                                      message: 'is not given between size' }
 
   def country_name
     country = ISO3166::Country[country_code]
