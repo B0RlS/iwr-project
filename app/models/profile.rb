@@ -20,8 +20,9 @@ class Profile < ApplicationRecord
 
   validates :resume, content_type: { in: 'application/pdf',
                                      message: 'is not a PDF' },
-            limit: {max: 1 }, size: { less_than: 100.megabytes,
-                                      message: 'is not given between size' }
+                     limit: { max: 1 },
+                     size: { less_than: 100.megabytes,
+                             message: 'is not given between size' }
 
   def country_name
     country = ISO3166::Country[country_code]
