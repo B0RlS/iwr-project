@@ -16,5 +16,5 @@
             - unless skill_level.nil? || skill_level.level == 0
               = skill.name + ' --- '
               = skill_level.level
-      button class="btn btn-lg btn-primary" data-toggle="modal" data-target=".bd-create-modal-lg" Edit
+      button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#skill-create-modal-lg" Edit
       = render 'shared/user/edit_skills_level_modal_window'

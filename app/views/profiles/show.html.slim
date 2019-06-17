@@ -22,7 +22,7 @@
             = link_to 'Download resume', rails_blob_path(@profile.resume, disposition: 'attachment'),
                     :class => 'btn btn-lg btn-success', :id => 'download_button'
 
-        button class="btn btn-lg btn-primary" data-toggle="modal" data-target=".bd-create-modal-lg" Edit
+        button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#profile-create-modal-lg" Edit
         = render 'shared/profile/edit_profile_modal_window'
       .profile-avatar
         - if @profile.avatar.attached?
