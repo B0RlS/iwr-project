@@ -71,10 +71,11 @@ RSpec.describe ProfilesController, type: :controller do
         telephone: '1'
       }
     end
+
     let(:valid_avatar) do
       {
-          avatar: user.profile.avatar.attach(io: File.open(Rails.root.
-              join('spec', 'fixtures' , 'files', 'test.png')), filename: 'test.png', content_type: 'image/png')
+          avatar: fixture_file_upload(Rails.root.
+              join('spec', 'fixtures' , 'files', 'test_valid_avatar.png'), 'image/png')
       }
     end
 
@@ -104,9 +105,9 @@ RSpec.describe ProfilesController, type: :controller do
         end
       end
 
-      # TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
       context 'when a user tries to change his avatar' do
-        it 'attaches the uploaded file' do
+        it 'attaches the uploaded valid file' do
           expect {
             patch :update, params: { id: user.profile.id, profile: valid_avatar }
           }.to change(ActiveStorage::Attachment, :count).by(1)
