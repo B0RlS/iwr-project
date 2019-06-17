@@ -46,6 +46,12 @@
   margin-right: 100px;
 }
 
+#profile-info {
+  padding: 2rem 1.5rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+}
+
 @media screen and (max-width: 770px) {
   .bg-colore {
     flex-direction: column-reverse;
