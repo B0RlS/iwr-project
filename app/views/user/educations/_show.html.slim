@@ -1,0 +1,17 @@
+
+      h1
+        | Education information  
+  
+      | University: #{@education.university}
+      br
+      | Faculty: #{@education.faculty}
+      br
+      | Department: #{@education.department}
+      br
+      | Entrance year: #{@education.entrance_year}
+      br
+      | Graduation year: #{@education.graduation_year}
+      br
+      | English level: #{@education.english_level}
+      br
+      = link_to 'Edit', edit_user_education_path
