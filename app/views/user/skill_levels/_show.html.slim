@@ -1,9 +1,9 @@
 .max-w
-  .bloktron#profile-info-head.text-center
+  .bloktron#profile-skills-info-head.text-center
     h1
-      | #{@user.name}'s' skills
+      | #{@user.name}'s skills
   .d-flex.flex-wrap.justify-content-between.align-items-center.bg-colore
-    .bloktron#profile-info
+    .bloktron#profile-skills-info
       h1 Skills information
       p.lead
         - spheres = []
@@ -16,4 +16,5 @@
             - unless skill_level.nil? || skill_level.level == 0
               = skill.name + ' --- '
               = skill_level.level
-      = link_to 'Edit', edit_user_skill_level_path, :class => 'btn btn-lg btn-primary', :id => 'edit_button'
+      button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#skill-create-modal-lg" Edit
+      = render 'shared/user/edit_skills_level_modal_window'

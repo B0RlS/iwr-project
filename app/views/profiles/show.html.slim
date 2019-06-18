@@ -21,12 +21,15 @@
           - if @profile.resume.attached?
             = link_to 'Download resume', rails_blob_path(@profile.resume, disposition: 'attachment'),
                     :class => 'btn btn-lg btn-success', :id => 'download_button'
-        = link_to 'Edit', edit_profile_path, :class => 'btn btn-lg btn-primary', :id => 'edit_button'
+
+        button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#profile-create-modal-lg" Edit
+        = render 'shared/profile/edit_profile_modal_window'
       .profile-avatar
         - if @profile.avatar.attached?
           = image_tag @profile.avatar.variant(resize: "200x200"), class: 'rounded-circle'
         - else
           = image_tag gravatar_image_url(current_user.email, size: 200), height: 200, width: 200, class: 'rounded-circle'
-
 #skills
   = render 'user/skill_levels/show'
+br
+  = render 'user/educations/show'

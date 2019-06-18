@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
     @user = current_user
     @skills = Skill.all
     @skill_levels = User::SkillLevel.where(user_id: @user.id)
+    @education = User::Education.find(params[:user_id])
   end
 
   def edit

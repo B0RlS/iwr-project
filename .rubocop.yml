@@ -7,5 +7,4 @@ AllCops:
     - 'config/**/*'
     - 'bin/**/*'
     - 'spec/**/*'
-Documentation:
-  Enabled: false
+

@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   namespace :user do
     get '/vacancies', to: 'vacancies#index'
     resource :skill_level, only: %i[edit]
-  end
-
+    resource :education, only: %i[edit update]
+  end  
+  
   resources :profiles, param: :user_id, only: %i[show edit update]
 end

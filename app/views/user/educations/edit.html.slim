@@ -1,0 +1,31 @@
+main role="main" class="container" id="education"
+        div class="bloktron" id="education-head-edit"
+          div class="container"
+            h1
+              | Editing education information
+        div class="bloktron" id="education-info-edit"
+            = form_for(@education) do |f|
+                = render 'shared/register_error_messages', object: @education
+                div class="field"
+                = f.label :university
+                = f.text_field :university, placeholder: 'The name of your university', :class => 'form-control'
+                div class="field"
+                = f.label :faculty
+                = f.text_field :faculty, placeholder: 'The name of your faculty', :class => 'form-control'
+                div class="field"
+                = f.label :department
+                = f.text_field :department, placeholder: 'The name of your department', :class => 'form-control'
+                div class="field"
+                = f.label :entrance_year
+                = f.number_field :entrance_year, placeholder: '2000', :class => 'form-control'
+                div class="field"
+                = f.label :graduation_year
+                = f.number_field :graduation_year, placeholder: '2005', :class => 'form-control'
+                div class="field"
+                = f.label :english_level
+                br
+                = select(:user_education, :english_level, User::Education::ENGLISH)
+                br
+                br
+                div class="actions"
+                = f.submit "Edit education", :class => 'btn btn-primary'
