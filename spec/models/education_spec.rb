@@ -23,8 +23,6 @@ RSpec.describe User::Education, type: :model do
 
   describe '#entrance_year' do
     it { should validate_presence_of(:entrance_year) }
-    it { should validate_numericality_of(:entrance_year).is_less_than(2020) }
-    it { should validate_numericality_of(:entrance_year).is_greater_than(1950) }
   end
 
   describe '#graduation_year' do
