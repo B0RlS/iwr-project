@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProfilesController, type: :controller do
-	let(:user) { create(:user, :with_profile, :with_education) }
+	let(:user) { create(:user, :with_profile) }
 	let(:user_skill_level) { create(:user_skill_levels, :with_dependance) }
   let(:user2) { create(:user, :with_profile, email: 'test2@example.com') }
 
@@ -142,7 +142,7 @@ RSpec.describe ProfilesController, type: :controller do
     context 'when the user tries to change not his profile' do
       it 'does not update the record in the database and redirect to root' do
         patch :update, params: { user_id: user2.profile.id,
-              profile: valid_attribute }
+                                 profile: valid_attribute }
         expect(user2.profile.reload.telephone).to eq('375291111111')
         expect(response).to redirect_to(root_path)
       end

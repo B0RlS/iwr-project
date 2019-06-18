@@ -29,7 +29,6 @@
           = image_tag @profile.avatar.variant(resize: "200x200"), class: 'rounded-circle'
         - else
           = image_tag gravatar_image_url(current_user.email, size: 200), height: 200, width: 200, class: 'rounded-circle'
+
 #skills
   = render 'user/skill_levels/show'
-br
-  = render 'user/educations/show'

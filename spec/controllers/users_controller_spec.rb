@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let(:user) { create(:user, :with_profile, :with_education) }
-  let!(:user2) { create(:user, :with_profile, :with_education, email: 'test2@example.com') }
+  let(:user) { create(:user, :with_profile) }
+  let!(:user2) { create(:user, :with_profile, email: 'test2@example.com') }
   let(:valid_params) do
     {
       name: 'Boris',

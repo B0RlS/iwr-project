@@ -11,12 +11,6 @@ FactoryBot.define do
       end
     end
 
-    trait :with_education do
-      after :create do |user|
-        create :education, user: user
-      end
-    end
-    
     trait :with_skills do
       after :create do |user|
         create :skill_levels, user: user, skill: (create :skill)
