@@ -29,37 +29,6 @@ RSpec.describe ProfilesController, type: :controller do
     end
   end
 
-  describe 'GET #edit' do
-    context 'when logged in' do
-      before do
-        log_in user
-      end
-      it 'returns a successful response' do
-        get :edit, params: { user_id: user.profile.id }
-        expect(response).to be_successful
-      end
-
-      it 'render profiles#edit template' do
-        get :edit, params: { user_id: user.profile.id }
-        expect(response).to render_template(:edit)
-      end
-
-      context 'when the user tries to change not his profile' do
-        it 'redirect to root' do
-          get :edit, params: { user_id: user2.profile.id }
-          expect(response).to redirect_to(root_path)
-        end
-      end
-    end
-
-    context 'when logged out' do
-      it 'redirect to root' do
-        get :edit, params: { user_id: user.profile.id }
-        expect(response).to redirect_to(root_path)
-      end
-    end
-  end
-
 	describe 'PATCH #update' do
 		let(:valid_attribute) do
 			{

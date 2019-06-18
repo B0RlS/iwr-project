@@ -13,11 +13,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(user_params)
-    authorize @user
-  end
-
   def update
     @user = User.find(params[:user_id])
     authorize @user
