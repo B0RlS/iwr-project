@@ -6,21 +6,6 @@ RSpec.describe ProfilesController, type: :controller do
   let(:user2) { create(:user, :with_profile, email: 'test2@example.com') }
 
   describe 'GET #show' do
-    context 'when logged in' do
-      before do
-        log_in user
-      end
-      it 'returns a successful response' do
-        get :show, params: { user_id: user.profile.id }
-        expect(response).to be_successful
-      end
-
-      it 'render profiles#show template' do
-        get :show, params: { user_id: user.profile.id }
-        expect(response).to render_template(:show)
-      end
-    end
-
     context 'when logged out' do
       it 'redirect to root' do
         get :show, params: { user_id: user.profile.id }
