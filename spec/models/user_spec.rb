@@ -62,10 +62,6 @@ RSpec.describe User, type: :model do
       should allow_value(user.password).for(:password)
     end
 
-    it 'password confirmation should be present' do
-      should allow_value(user.password_confirmation).for(:password)
-    end
-
     it 'password should have a minimum length' do
       user.password = user.password_confirmation = 'a' * 5
       should_not allow_value(user.password).for(:password)
@@ -73,6 +69,24 @@ RSpec.describe User, type: :model do
 
     it 'password should be equal password confirmation' do
       expect(user.password).to eq(user.password_confirmation)
+    end
+  end
+
+  describe '#password_confirmation' do
+    it { should validate_length_of(:password_confirmation).is_at_least(6) }
+    it { should validate_length_of(:password_confirmation).is_at_most(200) }
+
+    it 'password_confirmation should be present' do
+      should allow_value(user.password_confirmation).for(:password_confirmation)
+    end
+
+    it 'password_confirmation should have a minimum length' do
+      user.password = user.password_confirmation = 'a' * 5
+      should_not allow_value(user.password_confirmation).for(:password_confirmation)
+    end
+
+    it 'password_confirmation should be equal password' do
+      expect(user.password_confirmation).to eq(user.password)
     end
   end
 
