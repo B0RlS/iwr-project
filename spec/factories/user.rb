@@ -4,6 +4,7 @@ FactoryBot.define do
     surname { 'TestSurname' }
     email { 'test@example.com' }
     password { '12345678' }
+    password_confirmation { '12345678' }
 
     trait :with_profile do
       after :create do |user|
