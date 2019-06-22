@@ -1,0 +1,26 @@
+div class="modal fade bd-preview-modal-lg" tabindex="-1" role="dialog" aria-hidden="true"
+  div class="modal-dialog modal-lg"
+    div class="modal-content"
+      div class="row top-margin"
+        div class="col-md-12"
+          h3 class="font-weight-bolder text-center"
+            | Preview
+      div class="preview-head"
+        div class="col-md-12"
+          h1 class="font-weight-bolder text-center text-monospace"
+            | #{@vacancy.name}
+          p class="text-center" id="vacancy-country"
+            | #{@vacancy.country}, #{@vacancy.city}
+        div class="col-md-10 offset-1"
+          h4 <b>#{@vacancy.specialty.name}</b>
+          div class="container"
+            h4 Description:
+            div class="container"
+              p = @vacancy.description
+            hr
+      div class="preview-body"
+        div class="col-md-10 offset-1"
+          = render 'shared/vacancy/vacancy_body',
+                   object: @attributes, links: false
+          div class="text-center"
+            button type="button" class="btn btn-secondary modal-button" data-dismiss="modal" Close

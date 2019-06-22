@@ -1,0 +1,22 @@
+div class="modal fade bd-create-modal-lg" id= "skill-create-modal-lg" tabindex="-1" role="dialog" aria-hidden="true"
+  div class="modal-dialog modal-lg"
+    div class="modal-content"
+      div class="row top-margin"
+        div class="col-md-12"
+          h3 class="font-weight-bolder text-center"
+            | Editing skills information
+      div class="col-md-8 offset-2"
+        = form_for (@user), html: {class: 'create_attribute'}, remote: true do |f|
+          table
+            th.level
+            th.select
+            - @edit_skill_levels.each_pair do |sphere, skills|
+              tr
+                td.level
+                  h3
+                    = sphere
+              - skills.each do |skill|
+                = render 'user/skill_levels/user_skill_level_fields', skill: skill
+          div class="action text-center"
+            button type="button" class="btn btn-secondary modal-button" data-dismiss="modal" Close
+            = f.submit "Edit skills", class: "btn btn-primary modal-button"

@@ -1,0 +1,24 @@
+.max-w
+  .bloktron#profile-info-head.text-center
+    h1
+      | #{@profile.user_name}'s education
+  .d-flex.flex-wrap.justify-content-between.align-items-center.bg-colore
+    .bloktron#profile-info
+      h4 Education information
+      p.lead
+        | University: #{@education.university}
+        br
+        | Faculty: #{@education.faculty}
+        br
+        | Department: #{@education.department}
+        br
+        | Entrance year: #{@education.entrance_year}
+        br
+        | Graduation year: #{@education.graduation_year}
+        br
+        | English level: #{@education.english_level}
+
+      button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#education-create-modal-lg" Edit
+      = render 'shared/profile/edit_education_info_modal_window'
+
+

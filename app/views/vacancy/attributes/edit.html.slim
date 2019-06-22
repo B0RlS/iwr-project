@@ -1,0 +1,22 @@
+div class="container" id="main-container"
+  div class="row top-margin"
+    div class="col-md-12"
+      h3 class="font-weight-bolder text-center"
+        | Edit vacancy head
+  div class="col-md-8 offset-2"
+    = form_for @attribute do |f|
+      = render 'shared/register_error_messages', object: @attribute
+      div class="field"
+        = f.label 'Choose type'
+        = f.select :attr_type, ['Requirements', 'Responsibilities', 'Benefits'],
+                   {}, {class: "form-control"}
+      div class="field"
+        = f.label "Enter text"
+        = f.text_field :name, class: "form-control"
+      div class="field"
+        = f.label 'Important?'
+        = f.check_box :important, {class: "form-control", id: "check-box"},
+                      "true", "false"
+      br
+      div class="action text-center"
+        = f.submit "Edit", class:"btn btn-primary"

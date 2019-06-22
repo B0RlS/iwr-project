@@ -1,0 +1,43 @@
+div class="container" id="main-container"
+  - if policy(@vacancy).update?
+    - unless @vacancy.publish
+      div class="col-md-12 text-right"
+        = link_to 'Publish',
+                  vacancy_publish_path(publish: true, vac_id: @vacancy.id),
+                  method: :patch,
+                  class: 'btn btn-success'
+    - else
+      div class="col-md-12 text-right"
+        = link_to 'Unpublish',
+                  vacancy_publish_path(publish: false, vac_id: @vacancy.id),
+                  method: :patch,
+                  class: 'btn btn-danger'
+  div class="vacancy-head"
+    div class="col-md-12"
+      h1 class="font-weight-bolder text-center text-monospace"
+        | #{@vacancy.name}
+      p class="text-center vacancy-country"
+        | #{@vacancy.country}, #{@vacancy.city}
+    div class="col-md-10 offset-1"
+      h4 <b>#{@vacancy.specialty.name}</b>
+      div class="container"
+        h4 Description:
+        div class="container vacancy-description"
+          p = @vacancy.description
+      - if policy(@vacancy).update?
+        button class="btn btn-primary vacancy-button" data-toggle="modal" data-target=".bd-edit-head-modal-lg" Edit vacancy head
+        = render 'shared/vacancy/edit_vacancy_head_modal_window'
+      hr
+  div class="vacancy-body"
+    div class="col-md-10 offset-1"
+      = render 'shared/vacancy/vacancy_body',
+              object: @attributes, links: policy(@vacancy).update?
+      - if policy(@vacancy).update?
+        button class="btn btn-primary vacancy-button" data-toggle="modal" data-target=".bd-create-modal-lg" Create new vacancy attribute
+        = render 'shared/vacancy/attribute_new_modal_window'
+        button class="btn btn-primary vacancy-button" data-toggle="modal" data-target=".bd-preview-modal-lg" Preview
+        = render 'shared/vacancy/preview_modal_window'
+        p = link_to "Delete vacancy", vacancy_path(@vacancy),
+                                  method: :delete,
+                                  data: { confirm: 'Are you sure?' },
+                                  class: "btn btn-danger vacancy-button"

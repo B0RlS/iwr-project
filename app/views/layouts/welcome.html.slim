@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    title IwrProject
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags
+  body
+    = render 'shared/navbar/welcome_navbar'
+    = render 'shared/home/for_unregistered_users'
+    = render 'shared/footer/welcome_footer'
+    = javascript_include_tag 'application'

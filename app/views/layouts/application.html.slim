@@ -4,11 +4,12 @@ html
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
     title IwrProject
     = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB2BpQGGw_TfAiL-ZBiJaSKSZuvR3DJI_g'
     = csrf_meta_tags
   body
-    = render 'shared/navbar/navbar'
-    - flash.each do |message_type, message|
-      = content_tag(:div, message, class: "alert alert-#{message_type}")
-    = yield
-    = render 'shared/footer/footer'
-    = javascript_include_tag 'application'
+    .container
+      = render 'shared/navbar/navbar'
+      - flash.each do |message_type, message|
+        = content_tag(:div, message, class: "alert alert-#{message_type}")
+      = yield
+      = javascript_include_tag 'application'

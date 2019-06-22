@@ -1,0 +1,10 @@
+Documentation:
+    Enabled: false
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'spec/**/*'
+

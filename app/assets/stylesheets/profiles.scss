@@ -1,6 +1,92 @@
-// Place all the styles related to the Profiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 #profile {
-  margin-top: 100px;
+  margin-top: 140px;
+}
+
+#skills {
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+#edit_button {
+  padding: 9px 45px;
+}
+
+#download_button {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  padding: 3px 30px;
+}
+
+#profile-info-head {
+  background-color: #0057fa;
+  color: #F7F7F7;
+  margin-bottom: 0px;
+  padding: .7rem 2rem;
+}
+
+#education {
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.bloktron {
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+  h4 {
+    margin: 20px;
+  }
+}
+
+#profile-head-edit {
+  background-color: #0057fa;
+  color: #F7F7F7;
+  padding: .7rem 2rem;
+}
+
+#profile-info-edit {
+  padding: 2rem 1.5rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+}
+
+.bg-colore {
+  background-color: #e9ecef;
+}
+
+#profile-skills-info {
+  padding: 2rem 1.5rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+}
+
+.max-w {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile-avatar {
+  margin-right: 100px;
+  margin-top: -50px;
+}
+
+#profile-skills-info-head {
+  background-color: #0057fa;
+  color: #F7F7F7;
+  margin-bottom: 0px;
+  padding: .7rem 2rem;
+}
+
+#profile-info {
+  padding: 2rem 1.5rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+}
+
+@media screen and (max-width: 770px) {
+  .bg-colore {
+    flex-direction: column-reverse;
+  }
+  .profile-avatar {
+    margin: 50px auto 20px auto;
+  }
 }

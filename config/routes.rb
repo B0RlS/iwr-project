@@ -5,11 +5,24 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get '/signup', to: 'users#new'
-  get '/login',  to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, param: :user_id, only: %i[new create]
-  resources :profiles, only: %i[show edit update]
+  get '/user/existence/:email', to: 'users#email_uniq?', constraints: { email: /.+\..+/}
+
+  namespace :vacancy do
+    patch '/publish', to: 'publish#update'
+    resources :attributes, param: :attr_id, except: %i[show new]
+    resources :country_search, only: %i[index]
+  end
+ 
+  resources :vacancies, param: :vac_id, except: %i[edit]
+  resources :users, param: :user_id, except: %i[index new]
+
+  namespace :user do
+    get '/vacancies', to: 'vacancies#index'
+    resource :education, only: %i[edit update]
+  end  
+  
+  resources :profiles, param: :user_id, only: %i[show edit update]
 end

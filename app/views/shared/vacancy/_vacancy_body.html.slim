@@ -1,0 +1,43 @@
+div class="col"
+  h3 Requirements
+  ul class="bullet-list"
+    - object.where(attr_type: 'Requirements').each do |req|
+      li
+        = render 'shared/vacancy/vacancy_body_attr', attribute: req
+        - if links
+          div class="body-buttons-group"
+            = link_to 'Edit', edit_vacancy_attribute_path(attr_id: req.id),
+                    class: "btn btn-primary btn-sm"
+            = link_to 'Delete', vacancy_attribute_path(attr_id: req.id),
+                    method: :delete,
+                    remote: true,
+                    class: "delete_attribute btn btn-danger btn-sm body-button"
+div class="col"
+  h3 Responsibilities
+  ul class="bullet-list"
+    - object.where(attr_type: 'Responsibilities').each do |res|
+      li
+        = render 'shared/vacancy/vacancy_body_attr', attribute: res
+        - if links
+          div class="body-buttons-group"
+            = link_to 'Edit', edit_vacancy_attribute_path(attr_id: res.id),
+                    class: "btn btn-primary btn-sm"
+            = link_to 'Delete', vacancy_attribute_path(attr_id: res.id),
+                    method: :delete,
+                    remote: true,
+                    class: "delete_attribute btn btn-danger btn-sm body-button"
+
+div class="col"
+  h3 Benefits
+  ul class="bullet-list"
+    - object.where(attr_type: 'Benefits').each do |ben|
+      li
+        = render 'shared/vacancy/vacancy_body_attr', attribute: ben
+        - if links
+          div class="body-buttons-group"
+            = link_to 'Edit', edit_vacancy_attribute_path(attr_id: ben.id),
+                    class: "btn btn-primary btn-sm"
+            = link_to ' Delete', vacancy_attribute_path(attr_id: ben.id),
+                    method: :delete,
+                    remote: true,
+                    class: "delete_attribute btn btn-danger btn-sm body-button"

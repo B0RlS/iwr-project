@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/.idea
+/config/secrets/*
 
 # Ignore uploaded files in development
 /storage/*

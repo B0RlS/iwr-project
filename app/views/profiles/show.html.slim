@@ -1,6 +1,35 @@
-div id="profile"
-  p
-    | Profile with id
-    = @profile.id
-div
-  = link_to :edit, edit_profile_path
+#profile
+  .max-w
+    .bloktron#profile-info-head.text-center
+      h1
+        | #{@profile.user_name}  #{@profile.user_surname}
+    .d-flex.flex-wrap.justify-content-between.align-items-center.bg-colore
+      .bloktron#profile-info
+        h4 Personal information
+        p.lead
+          | Email: #{@profile.user_email}
+          br
+          | Country: #{@profile.country_name}
+          br
+          | City: #{@profile.city}
+          br
+          | Telephone: #{@profile.telephone}
+          br
+          | Birthday: #{@profile.user_birthday}
+          br
+          | Resume:
+          - if @profile.resume.attached?
+            = link_to 'Download resume', rails_blob_path(@profile.resume, disposition: 'attachment'),
+                    :class => 'btn btn-lg btn-success', :id => 'download_button'
+
+        button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#profile-create-modal-lg" Edit
+        = render 'shared/profile/edit_profile_modal_window'
+      .profile-avatar
+        - if @profile.avatar.attached?
+          = image_tag @profile.avatar.variant(resize: "200x200"), class: 'rounded-circle'
+        - else
+          = image_tag gravatar_image_url(current_user.email, size: 200), height: 200, width: 200, class: 'rounded-circle'
+#skills
+  = render 'user/skill_levels/show'
+#education
+  = render 'user/educations/show'

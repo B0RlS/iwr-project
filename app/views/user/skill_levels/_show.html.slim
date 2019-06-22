@@ -1,0 +1,16 @@
+.max-w
+  .bloktron#profile-skills-info-head.text-center
+    h1
+      | #{@user.name}'s skills
+  .d-flex.flex-wrap.justify-content-between.align-items-center.bg-colore
+    .bloktron#profile-skills-info
+      h1 Skills information
+      p.lead
+        - @show_skill_levels.each_pair do |sphere, skills|
+          h3
+            = sphere
+          - skills.each do |skill|
+            h6
+              = "#{skill.name}: #{skill.level}"
+      button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#skill-create-modal-lg" Edit
+      = render 'shared/profile/edit_skills_level_modal_window'

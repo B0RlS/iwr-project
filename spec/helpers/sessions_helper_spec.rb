@@ -1,34 +1,7 @@
-# frozen_string_literal: true
-# rubocop:disable all
-
 require 'rails_helper'
 
 RSpec.describe SessionsHelper, type: :helper do
-  let(:user) { User.create(valid_params) }
-  let(:valid_params) do
-    {
-      name: 'Boris',
-      surname: 'Tsarikov',
-      email: 'example@example.com',
-      password: '1234567'
-    }
-  end
-
-  describe '#current_user' do
-    context 'if logged in' do
-      before do
-        log_in(user)
-      end
-      it 'return right user' do
-        expect(current_user).to eq(user)
-      end
-    end
-    context 'if not logged in' do
-      it 'return nil' do
-        expect(current_user).to eq(nil)
-      end
-    end
-  end
+  let(:user) { create(:user) }
 
   describe '#log_out' do
     before do
@@ -50,6 +23,20 @@ RSpec.describe SessionsHelper, type: :helper do
       expect(log_in(user)).to eq(user.id)
     end
   end
-end
 
-# rubocop:enable all
+  describe '#current_user' do
+    context 'if logged in' do
+      before do
+        log_in(user)
+      end
+      it 'returns right user' do
+        expect(current_user).to eq(user)
+      end
+    end
+    context 'if not logged in' do
+      it 'returns nil' do
+        expect(current_user).to eq(nil)
+      end
+    end
+  end
+end
