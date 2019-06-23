@@ -6,15 +6,11 @@
     .bloktron#profile-skills-info
       h1 Skills information
       p.lead
-        - spheres = []
-        - @skills.each do |skill|
+        - @show_skill_levels.each_pair do |sphere, skills|
           h3
-            = skill.sphere unless spheres.include?(skill.sphere)
-            - spheres << skill.sphere
-            - skill_level = @skill_levels.find_by(skill_id: skill.id)
-          h6
-            - unless skill_level.nil? || skill_level.level == 0
-              = skill.name + ' --- '
-              = skill_level.level
+            = sphere
+          - skills.each do |skill|
+            h6
+              = "#{skill.name}: #{skill.level}"
       button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#skill-create-modal-lg" Edit
       = render 'shared/profile/edit_skills_level_modal_window'

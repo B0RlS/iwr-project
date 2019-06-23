@@ -5,9 +5,11 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:user_id])
     authorize @profile
     @user = current_user
-    @skills = Skill.all
-    @skill_levels = User::SkillLevel.where(user_id: @user.id)
-    @education = User::Education.find(params[:user_id])
+    @edit_skill_levels = Skill.left_join_skill_levels(@user.id)
+                              .group_by(&:sphere)
+    @show_skill_levels = Skill.inner_join_skill_levels(@user.id)
+                              .group_by(&:sphere)
+    @education = User::Education.find_by(user_id: @user.id)
   end
 
   def update

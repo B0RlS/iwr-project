@@ -21,7 +21,6 @@ Rails.application.routes.draw do
 
   namespace :user do
     get '/vacancies', to: 'vacancies#index'
-    resource :skill_level, only: %i[edit]
     resource :education, only: %i[edit update]
   end  
   
