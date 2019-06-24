@@ -1,17 +1,5 @@
 div class="container" id="main-container"
-  - if policy(@vacancy).update?
-    - unless @vacancy.publish
-      div class="col-md-12 text-right"
-        = link_to 'Publish',
-                  vacancy_publish_path(publish: true, vac_id: @vacancy.id),
-                  method: :patch,
-                  class: 'btn btn-success'
-    - else
-      div class="col-md-12 text-right"
-        = link_to 'Unpublish',
-                  vacancy_publish_path(publish: false, vac_id: @vacancy.id),
-                  method: :patch,
-                  class: 'btn btn-danger'
+  = render 'shared/vacancy/top-buttons', object: @vacancy
   div class="vacancy-head"
     div class="col-md-12"
       h1 class="font-weight-bolder text-center text-monospace"
@@ -41,3 +29,9 @@ div class="container" id="main-container"
                                   method: :delete,
                                   data: { confirm: 'Are you sure?' },
                                   class: "btn btn-danger vacancy-button"
+      - if @vacancy.user != current_user && @request.empty?
+        div class="text-center"
+          = form_for :request, url: vacancy_requests_path, method: :post do |f|
+            = f.hidden_field :user_id, value: current_user.id
+            = f.hidden_field :vacancy_id, value: @vacancy.id
+            = f.submit "Send request!", class: 'btn btn-access'

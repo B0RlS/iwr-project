@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_one :education, dependent: :destroy, class_name: 'User::Education'
   has_many :vacancies, dependent: :destroy
+  has_many :vacancy_requests, class_name: 'Vacancy::Request'
 
   has_many :skill_levels, dependent: :destroy,
                           class_name: 'User::SkillLevel'
