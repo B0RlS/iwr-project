@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_193451) do
+ActiveRecord::Schema.define(version: 2019_06_21_112937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,16 @@ ActiveRecord::Schema.define(version: 2019_06_17_193451) do
     t.index ["vacancy_id"], name: "index_vacancy_attributes_on_vacancy_id"
   end
 
+  create_table "vacancy_requests", force: :cascade do |t|
+    t.boolean "approve"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "vacancy_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_vacancy_requests_on_user_id"
+    t.index ["vacancy_id"], name: "index_vacancy_requests_on_vacancy_id"
+  end
+
   create_table "vacancy_specialties", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -127,4 +137,6 @@ ActiveRecord::Schema.define(version: 2019_06_17_193451) do
   add_foreign_key "vacancies", "users"
   add_foreign_key "vacancies", "vacancy_specialties", column: "specialty_id"
   add_foreign_key "vacancy_attributes", "vacancies"
+  add_foreign_key "vacancy_requests", "users"
+  add_foreign_key "vacancy_requests", "vacancies"
 end

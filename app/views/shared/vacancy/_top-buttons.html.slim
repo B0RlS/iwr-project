@@ -1,0 +1,13 @@
+- if policy(object).update?
+  - unless object.publish
+    div class="col-md-12 text-right"
+      = link_to 'Publish',
+                vacancy_publish_path(publish: true, vac_id: object.id),
+                method: :patch,
+                class: 'btn btn-success'
+  - else
+    div class="col-md-12 text-right"
+      = link_to 'Unpublish',
+                vacancy_publish_path(publish: false, vac_id: object.id),
+                method: :patch,
+                class: 'btn btn-danger'

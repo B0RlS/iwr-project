@@ -7,32 +7,36 @@ div class="modal fade bd-create-modal-lg" id="education-create-modal-lg" tabinde
             | Editing education information
       div class="col-md-8 offset-2"
         = form_for (@education),  html: {class: 'create_attribute'}, remote: true  do |f|
-          / = render 'shared/register_error_messages', object: @education
+          = render 'shared/register_error_messages', object: @education
           div class="field"
             = f.label :university
             br
-            = f.text_field :university, placeholder: 'The name of your university'
+            = f.text_field :university, placeholder: 'The name of your university',
+                    class: 'form-control', minlength: '3', maxlength: '15', required: 'true'
           div class="field"
             = f.label :faculty
             br
-            = f.text_field :faculty, placeholder: 'The name of your faculty'
+            = f.text_field :faculty, placeholder: 'The name of your faculty',
+                    class: 'form-control', minlength: '2', maxlength: '15', required: 'true'
           div class="field"
             = f.label :department
             br
-            = f.text_field :department, placeholder: 'The name of your department'
+            = f.text_field :department, placeholder: 'The name of your department',
+                    class: 'form-control', minlength: '3', maxlength: '15', required: 'true'
           div class="field"
             = f.label :entrance_year
             br
-            = f.number_field :entrance_year, placeholder: '2016'
+            = f.number_field :entrance_year, placeholder: '2016', class: 'form-control', max: Time.now.year
           div class="field"
             = f.label :graduation_year
             br
-            = f.number_field :graduation_year, placeholder: '2020'
+            = f.number_field :graduation_year, placeholder: '2020', class: 'form-control', min: Time.now.year
           div class="field"
             = f.label :english_level
             br
             = select(:user_education, :english_level, User::Education::ENGLISH)
             br
+              br
           div class="action text-center"
             button type="button" class="btn btn-secondary modal-button" data-dismiss="modal" Close
             = f.submit "Edit", class:"btn btn-primary modal-button"

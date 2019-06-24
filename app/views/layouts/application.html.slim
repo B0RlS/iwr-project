@@ -9,7 +9,8 @@ html
   body
     .container
       = render 'shared/navbar/navbar'
-      - flash.each do |message_type, message|
-        = content_tag(:div, message, class: "alert alert-#{message_type}")
+      #main-container
+        - flash.each do |message_type, message|
+          = content_tag(:div, message, class: "alert alert-#{message_type}")
       = yield
       = javascript_include_tag 'application'

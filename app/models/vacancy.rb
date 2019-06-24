@@ -3,6 +3,7 @@
 class Vacancy < ApplicationRecord
   has_many :body_attributes, dependent: :destroy,
                              class_name: 'Vacancy::Attribute'
+  has_many :requests, class_name: 'Vacancy::Request'
   belongs_to :specialty, class_name: 'Vacancy::Specialty'
   belongs_to :user
 
