@@ -11,26 +11,26 @@ div class="modal fade bd-create-modal-lg" id="profile-create-modal-lg" tabindex=
           div class="field"
             = f.label :avatar
             br
-            = f.file_field :avatar
+            = f.file_field :avatar, accept: '.jpeg, .jpg, .png'
           div class="field"
             = f.label :resume
             br
-            = f.file_field :resume
+            = f.file_field :resume, accept: '.pdf'
           div class="field"
             = f.label :country
             br
-            = f.country_select :country_code, :class => 'form-control'
+            = f.country_select :country_code, class: 'form-control'
           div class="field"
             = f.label :city
-            = f.text_field :city, placeholder: 'Your city', :class => 'form-control'
+            = f.text_field :city, placeholder: 'Your city', class: 'form-control', minlength: '3', maxlength: '20', required: 'true'
           div class="field"
             = f.label :birthday
             br
             = f.date_select :birthday, start_year: Time.current.year - 100,
-                    end_year: Time.current.year, :class => 'form-control'
+                    end_year: Time.current.year, class: 'form-control'
           div class="field"
             = f.label :telephone
-            = f.text_field :telephone, placeholder: 'Your telephone', :class => 'form-control'
+            = f.text_field :telephone, placeholder: 'Your telephone', class:'form-control', minlength: '10', maxlength: '15', required: 'true'
             br
           div class="action text-center"
             button type="button" class="btn btn-secondary modal-button" data-dismiss="modal" Close
