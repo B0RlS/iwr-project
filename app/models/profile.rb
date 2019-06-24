@@ -18,7 +18,6 @@ class Profile < ApplicationRecord
                      size: { less_than: 100.megabytes,
                              message: 'is not given between size' }
 
-
   validates :resume, content_type: { in: 'application/pdf',
                                      message: 'is not a PDF' },
                      limit: { max: 1 },
