@@ -1,0 +1,13 @@
+tr
+  td.name = user.name
+  td.surname = user.surname
+  td.email = user.email
+  td.role = user.role
+  td.actions
+    => link_to 'Destroy user', admin_path(user),
+              method: :delete,
+              remote: true,
+              data: { confirm: 'Are you sure?' },
+              class: "btn btn-lg btn-primary"
+    button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#admin-create-modal-lg" Edit role
+    = render 'edit_user_role_modal_window', user: user

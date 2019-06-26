@@ -18,6 +18,10 @@ module SessionsHelper
     @current_user = nil
   end
 
+  def log_out_user(user)
+    session.delete(user.id)
+  end
+
   # Remembers the user to a permanent session.
   def remember(user)
     user.remember
@@ -38,5 +42,9 @@ module SessionsHelper
 
   def current_user_profile
     current_user.profile.id
+  end
+
+  def current_user?(user)
+    user == current_user
   end
 end

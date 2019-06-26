@@ -34,4 +34,4 @@ div class="container" id="main-container"
           = form_for :request, url: vacancy_requests_path, method: :post do |f|
             = f.hidden_field :user_id, value: current_user.id
             = f.hidden_field :vacancy_id, value: @vacancy.id
-            = f.submit "Send request!", class: 'btn btn-access'
+            = f.submit "Send request!", class: 'btn btn-success'

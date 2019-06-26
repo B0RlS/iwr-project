@@ -34,6 +34,7 @@ class VacanciesController < ApplicationController
     @vacancy = Vacancy.find(params[:vac_id])
     authorize @vacancy
     @vacancy.update_attributes(update_vacancy_params)
+    redirect_to @vacancy
   end
 
   def destroy
@@ -52,6 +53,7 @@ class VacanciesController < ApplicationController
   end
 
   def update_vacancy_params
-    params.require(:vacancy).permit(:name, :specialty_id, :description)
+    params.require(:vacancy).permit(:name, :specialty_id, :description,
+                                    :publish)
   end
 end

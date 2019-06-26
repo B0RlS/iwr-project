@@ -8,17 +8,23 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:user_id])
-    authorize @user
-    if @user.update_attributes(user_params)
-      redirect_to profile_path(user_profile_id)
+    if logged_in?
+      authorize @user
     else
-      flash[:danger] = 'Oops'
+      redirect_to root_path
+      return
     end
+    update_user(@user)
   end
 
   def destroy
     @user = User.find(params[:user_id])
-    authorize @user
+    if logged_in?
+      authorize @user
+    else
+      redirect_to root_path
+      return
+    end
     @user.destroy
 
     redirect_to root_path
@@ -37,11 +43,20 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :surname,
                                  :email, :password, :password_confirmation,
+                                 :role,
                                  skill_levels_attributes:
                                  %i[user_id skill_id level id])
   end
 
   def user_profile_id
     @user.profile.id
+  end
+
+  def update_user(user)
+    if user.update_attributes(user_params)
+      redirect_to profile_path(user_profile_id)
+    else
+      flash[:danger] = 'Oops'
+    end
   end
 end

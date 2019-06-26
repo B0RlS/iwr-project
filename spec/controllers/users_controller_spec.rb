@@ -83,7 +83,7 @@ RSpec.describe UsersController, type: :controller do
           expect(user.reload.name).to eq('Pepega')
         end
 
-        it 'redirect to profile' do
+        it 'redirects to profile' do
           patch :update, params: { user_id: user.id, user: valid_attribute }
           expect(response).to redirect_to(profile_path(user.profile.id))
         end
@@ -97,7 +97,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context 'when the user tries to change not his account' do
-        it 'does not update the record in the database and redirect to root' do
+        it 'does not update the record in the database and redirects to root' do
           patch :update, params: { user_id: user2.id, user: valid_attribute }
           expect(user.reload.name).to eq('TestName')
           expect(response).to redirect_to(root_path)
@@ -106,7 +106,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context 'when logged out' do
-      it 'does not update the record in the database and redirect to root' do
+      it 'does not update the record in the database and redirects to root' do
         patch :update, params: { user_id: user.id, user: valid_attribute }
         expect(user.reload.name).to eq('TestName')
         expect(response).to redirect_to(root_path)
@@ -126,7 +126,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context 'when the user tries to delete not his account' do
-        it 'does not deletes the record from the database' do
+        it 'does not delete the record from the database' do
           expect {
             delete :destroy, params: { user_id: user2.id }
           }.not_to change(User, :count)
@@ -135,13 +135,13 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context 'when logged out' do
-      it 'does not deletes the record from the database' do
+      it 'does not delete the record from the database' do
         expect {
           delete :destroy, params: { user_id: user2.id }
         }.not_to change(User, :count)
       end
 
-      it 'redirect to root' do
+      it 'redirects to root' do
         delete :destroy , params: { user_id: user2.id }
         expect(response).to redirect_to(root_path)
       end

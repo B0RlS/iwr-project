@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  resource :admin, param: :user_id, only: %i[show destroy update]
   get '/user/existence/:email', to: 'users#email_uniq?', constraints: { email: /.+\..+/}
 
   namespace :vacancy do
-    patch '/publish', to: 'publish#update'
     resources :attributes, param: :attr_id, except: %i[show new]
     resources :country_search, only: %i[index]
     resources :requests, only: %i[index create]
