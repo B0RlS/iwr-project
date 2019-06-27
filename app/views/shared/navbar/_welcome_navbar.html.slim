@@ -4,5 +4,5 @@ nav.navbar.navbar-expand.navbar-dark.fixed-top
     ul.navbar-nav.ml-auto
       li.nav-item
         = link_to "About", root_path, class: "nav-link"
-      li.nav-item
-        = link_to "Contact", root_path, class: "nav-link"
+      li.nav-item class="nav-link" data-toggle="modal" data-target="#contact-modal-lg" Contact
+= render 'shared/home/contact_modal_window'
