@@ -17,4 +17,12 @@ class Vacancy < ApplicationRecord
     cntr = ISO3166::Country[country]
     cntr.translations[I18n.locale.to_s] || cntr.name unless cntr.nil?
   end
+
+  def self.search_vacancies(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
 end
