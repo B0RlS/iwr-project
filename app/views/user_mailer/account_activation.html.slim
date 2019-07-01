@@ -1,0 +1,10 @@
+h1 IWR-project
+br
+p Hello, #{@user.name}!
+br
+p Welcome to IWR-project!
+br
+p Click on the link below to activate your account:
+br
+= link_to "Activate", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email)

@@ -25,7 +25,7 @@ RSpec.describe UsersController, type: :controller do
       get :email_uniq?, params: { email: 'uniqemail@example.com' }
       expect(response).to have_http_status(404)
     end
-    
+
     it 'has 204 status code if email not uniq' do
       get :email_uniq?, params: { email: user2.email }
       expect(response).to have_http_status(204)
@@ -53,9 +53,9 @@ RSpec.describe UsersController, type: :controller do
         end.not_to change(User, :count)
       end
 
-      it 'returns a successful response' do
+      it 'returns an unsuccessful response' do
         post :create, params: { user: invalid_params }
-        expect(response).to be_successful
+        expect(response).not_to be_successful
       end
     end
   end

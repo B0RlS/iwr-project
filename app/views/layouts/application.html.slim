@@ -7,10 +7,7 @@ html
     = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB2BpQGGw_TfAiL-ZBiJaSKSZuvR3DJI_g'
     = csrf_meta_tags
   body
-    .container
-      = render 'shared/navbar/navbar'
-      #main-container
-        - flash.each do |message_type, message|
-          = content_tag(:div, message, class: "alert alert-#{message_type}")
-      = yield
-      = javascript_include_tag 'application'
+    = render 'shared/navbar/navbar'
+    = render 'shared/message_to_user'
+    = yield
+    = javascript_include_tag 'application'

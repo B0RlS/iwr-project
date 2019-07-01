@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-require 'rails_helper'
-
 RSpec.describe User, type: :model do
   let(:user) { create(:user) }
   let(:valid_emails) { %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn] }
@@ -18,13 +16,13 @@ RSpec.describe User, type: :model do
 
   describe '#surname' do
     it { should validate_presence_of(:surname) }
-    it { should validate_length_of(:surname).is_at_least(5) }
+    it { should validate_length_of(:surname).is_at_least(2) }
     it { should validate_length_of(:surname).is_at_most(50) }
   end
 
   describe '#email' do
     it { should validate_presence_of(:email) }
-    it { should validate_length_of(:email).is_at_least(10) }
+    it { should validate_length_of(:email).is_at_least(8) }
     it { should validate_length_of(:email).is_at_most(200) }
     it { should allow_value('example@example.com').for(:email) }
 
@@ -92,7 +90,7 @@ RSpec.describe User, type: :model do
 
   describe '#authenticated?' do
     it 'authenticated? should return false for a user with nil digest' do
-      expect(create(:user).authenticated?('')).to eq(false)
+      expect(create(:user).authenticated?(:remember, '')).to eq(false)
     end
   end
 end

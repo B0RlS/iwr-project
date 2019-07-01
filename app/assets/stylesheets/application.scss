@@ -28,7 +28,6 @@
 footer {
   font-size: 1rem;
   color: white;
-  background-color: rgba(0, 0, 0, .7);
   padding: 1rem;
 }
 
@@ -106,23 +105,45 @@ label {
   height: 100vh;
   z-index: 1050;
 }
-#loginlayunder, #registerlayunder {
+#loginlayunder, #registerlayunder, #resetlayunder, #passresetlayunder {
   max-width: 350px;
   margin: 0 auto;
   z-index: 1051;
 }
-#register, #fogotpass, #loginback {
-  margin-bottom: 10px;
-  color: #345654;
-  text-decoration: underline;
-  transition: all .2s ease-in-out;
+#resetlayunder, #passresetlayunder {
+  margin: 130px auto;
+}
+#fogotpass, #register, #loginback, #backmodal {
+margin-bottom: 10px;
+color: #345654;
+text-decoration: underline;
+transition: all .2s ease-in-out;
   &:hover {
     cursor: pointer;
     color: #353456;
+    transform: scale(1.3, 1.3);
   }
 }
-#register, #loginback {
-  &:hover{
+.rememberme {
+  transition: all .2s ease-in-out;
+  &:hover {
+    color: #353456;
     transform: scale(1.3, 1.3);
+  }
+}
+#passresetlayunder {
+  .btn {
+    font-weight: 600;
+    font-size: .8rem;
+    border-radius: 1.45rem;
+    padding: 14px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .btn:hover, .btn:focus {
+  text-decoration: none;
+  }
+  .btn:focus, .btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
 }

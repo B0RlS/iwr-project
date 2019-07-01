@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    title IwrProject
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags
+  body
+    = render 'shared/navbar/welcome_navbar'
+    .index
+        .overlay
+        = video_tag(["iwr.mp4"], autoplay: true, loop: true, muted: true, playsinline: "playsinline", poster: "screen.png")
+        .container.h-100
+            .d-flex.h-100.text-center.align-items-center
+                .w-100.text-white.welcom
+                    h1.display-3#firstmessage I WANT TO RELOCATE!
+                    p.lead.mb-0#secondmessage Change your dream-job office today
+                    button#getstarted.btn.btn-primary.text-uppercase
+                        | Get Started
+    = render 'shared/password_reset/new_pass_set'
+    = render 'shared/footer/welcome_footer'
+    = javascript_include_tag 'application'

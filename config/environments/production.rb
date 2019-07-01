@@ -75,6 +75,8 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "iwr-project_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  host = 'localhost:3000'
+  config.action_mailer.default_url_options = { host: host }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server

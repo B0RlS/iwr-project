@@ -70,10 +70,6 @@
     }
   }
 }
-#kek {
-  margin-top: 150px;
-  margin-left: 150px;
-}
 #badnote {
   color: red;
   font-size: 80%;
@@ -115,7 +111,63 @@
     width: 800px;
     height: 400px;
 }
-
+#info {
+  position: absolute;
+  z-index: 1300;
+  top: 15vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    animation: lightSpeedIn .95s ease-in-out;
+  }
+}
+#textmessage {
+  color: white;
+  font-size: 5vw;
+  text-align: center;
+  text-shadow: black 2px 2px 0, black -2px -2px 0,
+                 black -2px 2px 0, black 2px -2px 0;
+  animation: lightSpeedIn .95s ease-in-out, bounce .83s 1.5s infinite;
+}
+@keyframes bounce {
+  from{
+    transform: translateY(0);
+  }
+  to{
+    transform: translateY(10px);
+  }
+}
+@keyframes lightSpeedIn {
+  from {
+    -webkit-transform: translate3d(120%, 0, 0) skewX(40deg);
+    transform: translate3d(120%, 0, 0) skewX(40deg);
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes lightSpeedOut {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    -webkit-transform: translate3d(-120%, 0, 0) skewX(-40deg);
+    transform: translate3d(-120%, 0, 0) skewX(-40deg);
+  }
+}
+.lightSpeedOut {
+  animation: lightSpeedOut 1.2s ease-out;
+}
 .contact-info {
   display: flex;
   flex-wrap: wrap;

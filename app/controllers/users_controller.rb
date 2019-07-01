@@ -3,11 +3,9 @@
 class UsersController < ApplicationController
   def create
     @user = UserCreateService.new(user_params).call
-    if log_in @user
-      redirect_to root_path
-    else
-      flash[:danger] = 'User not created'
-    end
+    @user.send_activation_email if @user.save
+    flash[:info] = 'YaY! Check your mailbox to proceed! ;-)'
+    redirect_to root_path
   end
 
   def update

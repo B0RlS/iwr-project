@@ -15,6 +15,27 @@
 //= require activestorage
 //= require bootstrap
 //= require_tree .
+
+var textmessage = document.querySelector("#textmessage"),
+regExpMes = /./;
+
+setTimeout( function() {
+  $( "#info" ).removeClass( "d-none" );
+  if ( regExpMes.test( textmessage.innerHtml )) {
+    $( "#firstmessage").fadeTo( 500, 0 );
+    $( "#secondmessage").fadeTo( 500, 0 );
+  };
+}, 1200);
+
+$( "#info" ).on('click', function() {
+    $( this ).addClass( "lightSpeedOut" );
+    setTimeout( function() {
+      $( "#info" ).addClass( "d-none" );
+      $( "#firstmessage").fadeTo( 500, 1 );
+      $( "#secondmessage").fadeTo( 500, 1 );
+    }, 1100);
+});
+
 // for logged users
 
 var map;
@@ -162,3 +183,4 @@ function constructNewCoordinates(polygon) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+

@@ -7,6 +7,8 @@ html
     = csrf_meta_tags
   body
     = render 'shared/navbar/welcome_navbar'
+    = render 'shared/message_to_user'
     = render 'shared/home/for_unregistered_users'
     = render 'shared/footer/welcome_footer'
     = javascript_include_tag 'application'
+
