@@ -6,18 +6,18 @@
     = form_for @user, html: { class:'form-signin' } do |f|
       = render 'shared/register_error_messages', object: @user
       .form-label-group
-        = f.text_field :name, class: 'form-control', placeholder: 'Name', required: true
+        = f.text_field :name, class: 'form-control', placeholder: 'Name', required: true, minlength: '2',  maxlength: '30'
       .form-label-group
-        = f.text_field :surname, class: 'form-control', placeholder: 'Surname', required: true
+        = f.text_field :surname, class: 'form-control', placeholder: 'Surname', required: true, minlength: '5',  maxlength: '50'
       .form-label-group
         #hintalert.d-none.text-center Please, write your email correctly &#128526;
         #badnote.d-none.text-center This email is not available &#9785;
         #goodnote.d-none.text-center This email is available &#128515;
         = f.email_field :email, class: 'form-control', placeholder: 'Email', required: true
       .form-label-group
-        = f.password_field :password, class: 'form-control', placeholder: 'Password', required: true
+        = f.password_field :password, class: 'form-control', placeholder: 'Password', required: true, minlength: '6',  maxlength: '200'
       .form-label-group
-        = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password', required: true
+        = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password', required: true, minlength: '6',  maxlength: '200'
       div.d-flex.justify-content-end
         #loginback Login
       button.btn.btn-lg.btn-facebook.btn-block.text-uppercase#switchbutton type="submit"

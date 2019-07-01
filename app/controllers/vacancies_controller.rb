@@ -2,7 +2,7 @@
 
 class VacanciesController < ApplicationController
   def index
-    @vacancies = Vacancy.where(publish: true)
+    @vacancies = Vacancy.search_vacancies(params[:search])
     authorize @vacancies
   end
 

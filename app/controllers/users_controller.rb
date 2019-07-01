@@ -3,7 +3,11 @@
 class UsersController < ApplicationController
   def create
     @user = UserCreateService.new(user_params).call
-    redirect_to root_path if log_in @user
+    if log_in @user
+      redirect_to root_path
+    else
+      flash[:danger] = 'User not created'
+    end
   end
 
   def update
