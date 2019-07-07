@@ -3,9 +3,12 @@
 class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
-    return unless @user&.authenticate(params[:session][:password])
-
-    user_activation_check
+    if @user&.authenticate(params[:session][:password])
+      user_activation_check
+    else
+      flash[:warning] = 'Huhh.. Type your email or password correctly! ;-)'
+      redirect_to root_path
+    end
   end
 
   def user_activation_check

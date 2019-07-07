@@ -1,12 +1,30 @@
 # frozen_string_literal: true
 
 class UserPolicy < ApplicationPolicy
+  class Scope < Scope
+    attr_reader :user, :scope
+
+    def initialize(user, scope)
+      @user  = user
+      @scope = scope
+    end
+
+    def resolve
+      if user.admin?
+        scope.all
+      elsif user.director?
+        scope.where("users.role=#{User.roles[:manager]}
+           OR users.role=#{User.roles[:employee]}")
+      end
+    end
+  end
+
   def show?
-    admin?
+    admin? || director?
   end
 
   def update?
-    owner? || admin?
+    owner? || admin? || director?
   end
 
   def destroy?
@@ -21,5 +39,9 @@ class UserPolicy < ApplicationPolicy
 
   def admin?
     user.admin?
+  end
+
+  def director?
+    user.director?
   end
 end

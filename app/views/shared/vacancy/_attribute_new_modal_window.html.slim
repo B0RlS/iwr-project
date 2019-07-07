@@ -15,7 +15,7 @@ div class="modal fade bd-create-modal-lg" tabindex="-1" role="dialog" aria-hidde
                        {}, {class: "form-control"}
           div class="field"
             = f.label "Enter text"
-            = f.text_field :name, class: "form-control"
+            = f.text_field :name, class: "form-control", required: 'true'
           div class="field"
             = f.label 'Important?'
             = f.check_box :important, {class: "form-control", id: "check-box"},

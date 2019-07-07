@@ -1,0 +1,10 @@
+.user-table#main-container
+  table.table-hover.table.table-responsive-sm.thead-dark
+      tr
+        th Name
+        th Surname
+        th Email
+        th Role
+        th colspan="2"Actions
+      - @users.each do |user|
+        = render 'user', user: user

@@ -1,0 +1,13 @@
+- user_params = {user_id: user.id, user: {role: user.employee? ? 'manager' : 'employee'}}
+tr
+  td.name = user.name
+  td.surname = user.surname
+  td.email = user.email
+  td.role#user-role = user.role
+  td.actions
+    = link_to 'Toggle role', director_path(user_params),
+              class: "btn btn-lg btn-primary",
+              id: "toggle-user-role",
+              method: :patch,
+              remote: true,
+              data: { confirm: 'Are you sure?' }

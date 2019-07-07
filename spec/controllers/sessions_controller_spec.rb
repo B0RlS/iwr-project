@@ -19,9 +19,9 @@ RSpec.describe SessionsController, type: :controller do
 
   describe 'POST #create' do
     context 'when invalid' do
-      it 'returns a successful response' do
+      it 'returns an unsuccessful response' do
         post :create, params: { session: invalid_params }
-        expect(response).to be_successful
+        expect(response).not_to be_successful
       end
     end
   end

@@ -45,7 +45,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :surname,
                                  :email, :password, :password_confirmation,
-                                 :role,
                                  skill_levels_attributes:
                                  %i[user_id skill_id level id])
   end
