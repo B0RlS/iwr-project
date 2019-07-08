@@ -5,6 +5,9 @@ RSpec.describe VacanciesController, type: :controller do
   let(:user2) { create :user, email: 'example2@gmail.com'}
   let!(:vacancy2) { create :vacancy, user: user2 }
 
+  let(:user3) { create :user, :as_manager, email: 'example3@gmail.com'}
+  let!(:vacancy3) { create :vacancy, user: user3 }
+
   describe 'GET #index' do
     context 'when logged in' do
       before do
@@ -55,7 +58,7 @@ RSpec.describe VacanciesController, type: :controller do
   describe 'GET #new' do
     context 'when logged in' do
       before do
-        log_in vacancy.user
+        log_in vacancy3.user
       end
       it 'returns a successful response' do
         get :new

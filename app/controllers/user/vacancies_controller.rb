@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
-class User
+class User < ApplicationRecord
   class VacanciesController < ApplicationController
     def index
+      @manager = current_user
+      if logged_in?
+        authorize @manager, :manager?
+      else
+        redirect_to root_path
+        return
+      end
       @vacancies = Vacancy.where(user_id: current_user_id)
       authorize @vacancies
     end

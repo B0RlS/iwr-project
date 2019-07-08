@@ -20,7 +20,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    admin? || director?
+    admin? || director? || manager?
   end
 
   def update?
@@ -29,6 +29,10 @@ class UserPolicy < ApplicationPolicy
 
   def destroy?
     owner? || admin?
+  end
+
+  def manager?
+    user.manager?
   end
 
   private

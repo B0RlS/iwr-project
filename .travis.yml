@@ -1,7 +1,11 @@
 language: ruby
 cache: bundler
+install: gem install bundler:1.16.1
+before_install:
+  - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
 before_script:
   - cp config/database.travis.yml config/database.yml
+  - bundle install
   - bundle exec rake db:setup
 script:
   - bundle exec rubocop

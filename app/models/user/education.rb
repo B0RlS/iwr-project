@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User
+class User < ApplicationRecord
   class Education < ApplicationRecord
     belongs_to :user
 

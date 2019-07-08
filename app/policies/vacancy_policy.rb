@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class VacancyPolicy < ApplicationPolicy
+  def new?
+    user.manager?
+  end
+
   def update?
     owner?
   end

@@ -1,5 +1,15 @@
 # frozen_string_literal: true
 
+manager_params = {
+  name: 'manager',
+  surname: 'manager',
+  email: 'manager@example.com',
+  password: '1234567',
+  password_confirmation: '1234567',
+  role: :manager
+ }
+
+UserCreateService.new(manager_params).call
 # This file should contain all the record creation needed
 # to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command
@@ -20,7 +30,7 @@ admin_params = {
                 role: :admin
                }
 
-UserCreateService.new(admin_params).call
+UserCreateService.new(admin_params).call.activate
 
 programming_languages = [
   'ABAP',

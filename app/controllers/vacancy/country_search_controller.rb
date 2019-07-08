@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Vacancy
+class Vacancy < ApplicationRecord
   class CountrySearchController < ApplicationController
     def index
       @vacancies = Vacancy.where(country: params[:country],
