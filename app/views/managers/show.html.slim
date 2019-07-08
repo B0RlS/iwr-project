@@ -1,0 +1,13 @@
+.user-table#main-container
+  table
+    - unless @users.empty?
+      tr
+        th name
+        th surname
+        th email
+        th role
+      - @users.each do |user|
+        = render 'user', user: user
+    - else
+      p
+        | No users found.

@@ -23,7 +23,7 @@ div class="container" id="main-container"
           - unless vac.publish
             div class="col-md-12 text-right"
               = link_to 'Publish',
-                        vacancy_publish_path(publish: true, vac_id: vac.id),
+                        vacancy_path(publish: true, vac_id: vac.id),
                         method: :patch,
                         class: 'btn btn-success',
                         id: 'change-publish-status',
@@ -31,7 +31,7 @@ div class="container" id="main-container"
           - else
             div class="col-md-12 text-right"
               = link_to 'Unpublish',
-                        vacancy_publish_path(publish: false, vac_id: vac.id),
+                        vacancy_path(publish: false, vac_id: vac.id),
                         method: :patch,
                         class: 'btn btn-danger',
                         id: 'change-publish-status',

@@ -24,6 +24,12 @@ FactoryBot.define do
       end
     end
 
+    trait :as_manager do
+      after :create do |user|
+        user.manager!
+      end
+    end
+    
     trait :as_admin do
       after :create do |user|
         user.admin!

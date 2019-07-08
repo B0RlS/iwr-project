@@ -4,7 +4,7 @@ RSpec.describe User::VacanciesController, type: :controller do
   describe 'GET #index' do
     context 'when logged in' do
       before do
-        log_in create(:user)
+        log_in create(:user, :as_manager)
       end
       it 'render index template' do
         get :index

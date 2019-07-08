@@ -16,7 +16,12 @@ class VacanciesController < ApplicationController
 
   def new
     @vacancy = Vacancy.new
-    authorize @vacancy
+    if logged_in?
+      authorize @vacancy
+    else
+      redirect_to root_path
+      return
+    end
   end
 
   def create
