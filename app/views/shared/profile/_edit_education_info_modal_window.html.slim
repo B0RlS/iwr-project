@@ -26,11 +26,11 @@ div class="modal fade bd-create-modal-lg" id="education-create-modal-lg" tabinde
           div class="field"
             = f.label :entrance_year
             br
-            = f.number_field :entrance_year, placeholder: '2016', class: 'form-control', max: Time.now.year
+            = f.number_field :entrance_year, placeholder: '2016', class: 'form-control', min: 1950, max: Time.now.year
           div class="field"
             = f.label :graduation_year
             br
-            = f.number_field :graduation_year, placeholder: '2020', class: 'form-control', min: Time.now.year
+            = f.number_field :graduation_year, placeholder: '2020', class: 'form-control', min: 1955
           div class="field"
             = f.label :english_level
             br
