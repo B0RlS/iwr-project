@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Vacancy
+class Vacancy < ApplicationRecord
   class AttributesController < ApplicationController
     def edit
       @attribute = Vacancy::Attribute.find(params[:attr_id])

@@ -30,7 +30,7 @@ admin_params = {
                 role: :admin
                }
 
-UserCreateService.new(admin_params).call
+UserCreateService.new(admin_params).call.activate
 
 programming_languages = [
   'ABAP',

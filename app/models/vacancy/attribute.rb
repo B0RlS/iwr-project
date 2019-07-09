@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Vacancy
+class Vacancy < ApplicationRecord
   class Attribute < ApplicationRecord
     belongs_to :vacancy
 

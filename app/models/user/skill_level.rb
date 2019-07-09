@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User
+class User < ApplicationRecord
   class SkillLevel < ApplicationRecord
     belongs_to :user
     belongs_to :skill
