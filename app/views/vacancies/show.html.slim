@@ -35,3 +35,8 @@ div class="container" id="main-container"
             = f.hidden_field :user_id, value: current_user.id
             = f.hidden_field :vacancy_id, value: @vacancy.id
             = f.submit "Send request!", class: 'btn btn-success'
+      - if @vacancy.user == current_user && !@requests.empty?
+        h4.font-weight-bold
+            | Employment seekers 
+        - @requests.each do |req|
+          = render 'vacancy_request', request: req

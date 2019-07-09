@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :vacancy do
     resources :attributes, param: :attr_id, except: %i[show new]
     resources :country_search, only: %i[index]
-    resources :requests, only: %i[index create]
+    resources :requests, only: %i[index create update]
   end
 
   namespace :user do

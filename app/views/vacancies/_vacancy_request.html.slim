@@ -1,0 +1,25 @@
+.row.top-margin
+  .col-md-3
+    p.text-monospace.vacancy-name
+      = link_to "#{request.user.name} #{request.user.surname}", profile_path(request.user_id)
+  .text-center
+    p Request Status:
+    - if request.approve
+      p.approved
+        | Approved!
+    - elsif request.approve.nil?
+      p.pending
+        | Pending
+    - else
+      p.denied
+        | Denied
+  - if request.approve.nil?
+    .d-md-table-cell.text-center
+      => form_for :request, url: vacancy_request_url(request), method: :patch do |f|
+        => f.hidden_field :approve, value: true
+        => f.submit "Approve!", class: 'btn btn-success'
+    .d-md-table-cell.text-center
+      => form_for :request, url: vacancy_request_url(request), method: :patch do |f|
+        => f.hidden_field :approve, value: false
+        => f.submit "Decline!", class: 'btn btn-danger'
+hr

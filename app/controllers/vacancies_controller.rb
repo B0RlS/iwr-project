@@ -10,6 +10,7 @@ class VacanciesController < ApplicationController
     @vacancy = Vacancy.find(params[:vac_id])
     authorize @vacancy
     @attributes = Vacancy::Attribute.where(vacancy_id: params[:vac_id])
+    @requests = Vacancy::Request.where(vacancy_id: @vacancy.id)
     @request = Vacancy::Request.where(user_id: current_user.id,
                                       vacancy_id: @vacancy.id)
   end

@@ -1,11 +1,12 @@
 .user-table#main-container
-  table
+  table.table-hover.table.table-responsive-sm.thead-dark
     - unless @users.empty?
       tr
         th name
         th surname
         th email
         th role
+        th actions
       - @users.each do |user|
         = render 'user', user: user
     - else

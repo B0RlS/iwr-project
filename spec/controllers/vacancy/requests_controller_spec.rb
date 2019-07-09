@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Vacancy::RequestsController, type: :controller do
   let(:vacancy) { create(:vacancy) }
   let(:user) { create(:user, email: "example2@example.com") }
+  let(:manager) { create(:user, :as_manager, email: 'm@example.com') }
 
   describe 'GET #index' do
     context 'when logged in' do
@@ -84,9 +85,62 @@ RSpec.describe Vacancy::RequestsController, type: :controller do
     end
 
     context 'when logged out' do
-      it 'redirect to root path' do
-        post :create, params: { request: invalid_params }
+      it "doesn't create request" do
+        expect do
+          post :create, params: { request: valid_params }
+        end.not_to change(Vacancy::Request, :count)
+      end
+
+      it 'redirects to root path' do
+        post :create, params: { request: valid_params }
         expect(response).to redirect_to(root_path)
+      end
+    end
+  end
+
+  describe 'PATCH #update' do
+    context 'when logged out' do
+      it "doesn't update request" do
+
+      end
+
+      it 'redirects to root' do
+      end
+    end
+
+    context 'when logged in' do
+      context 'as user' do
+        before do
+          log_in user
+        end
+
+        it "doesn't update request" do
+        end
+
+        it 'redirects to root' do
+        end
+      end
+
+      context 'as manager' do
+        before do
+          log_in manager
+        end
+
+        context 'with valid params' do
+          it 'updates request' do
+          end
+
+          it 'redirects to vacancy' do
+          end
+        end
+
+        context 'with invalid params' do
+          it "doesn't update request" do
+          end
+
+          it 'redirects to vacancy' do
+          end
+        end
       end
     end
   end
