@@ -9,5 +9,5 @@ tr
               remote: true,
               data: { confirm: 'Are you sure?' },
               class: "btn btn-lg btn-primary"
-    button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#admin-create-modal-lg" Edit role
+    button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#admin-create-modal-lg-#{user.id}" Edit role
     = render 'edit_user_role_modal_window', user: user
